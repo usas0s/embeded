@@ -19,8 +19,4 @@ public class MainActivity extends AppCompatActivity {
         Intent detail_intent = new Intent(this,Details.class);
         startActivity(detail_intent);
     }
-
-    public void onClickSearch(View view){
-        //Intent search_intent = new Intent(this,)
-    }
 }
