@@ -20,4 +20,12 @@
         android:layout_height="wrap_content"
         android:text="detail"
         android:onClick="onClickDetail"/>
+
+    <Button
+        android:text="LOGIN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login"
+        android:layout_weight="1"
+        android:onClick="onCilckLogin"/>
 </LinearLayout>

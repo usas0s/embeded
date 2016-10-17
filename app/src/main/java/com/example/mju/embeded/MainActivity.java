@@ -19,4 +19,9 @@ public class MainActivity extends AppCompatActivity {
         Intent detail_intent = new Intent(this,Details.class);
         startActivity(detail_intent);
     }
+
+    public void onCilckLogin(View view) {
+        Intent login_intent = new Intent(this, login.class);
+        startActivity(login_intent);
+    }
 }
