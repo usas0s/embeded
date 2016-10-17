@@ -21,5 +21,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SearchResult"></activity>
     </application>
+    <!-- commit test2 -->
 
 </manifest>
