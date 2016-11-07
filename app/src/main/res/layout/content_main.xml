@@ -10,14 +10,28 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.mju.embeded.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Content Main"
-        android:textSize="30sp"/>
+        android:text="Content Main" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:onClick="onCilckLogin"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detail"
+        android:onClick="onCilckDetail"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detail"
+        android:onClick="onCilckSearch"/>
 
 </LinearLayout>
