@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     public final static String ID ="hello";
     public final static String PASSWORD ="1234";
