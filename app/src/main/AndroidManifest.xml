@@ -29,7 +29,13 @@
         <activity android:name=".SearchResult" />
         <activity
             android:name=".Login"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
+
+        <provider
+            android:name=".Login_ContentProvider"
+            android:authorities="com.example.mju.embeded"
+            android:enabled="true"
+            android:exported="true"></provider>
     </application>
 
 </manifest>
