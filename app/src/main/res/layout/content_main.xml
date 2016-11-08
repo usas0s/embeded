@@ -31,7 +31,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SearchResult"
+        android:text="Search"
         android:onClick="onClickSearch"/>
 
 </LinearLayout>
