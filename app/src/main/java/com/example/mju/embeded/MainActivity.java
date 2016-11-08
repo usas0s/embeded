@@ -59,12 +59,12 @@ public class MainActivity extends AppCompatActivity
         startActivity(detail_intent);
     }
 
-    public void onCilckLogin(View view) {
+    public void onClickLogin(View view) {
         Intent login = new Intent(this, Login.class);
         startActivity(login);
     }
-    public void onCilckSearch(View view) {
-        Intent search_intent = new Intent(this, Login.class);
+    public void onClickSearch(View view) {
+        Intent search_intent = new Intent(this, SearchResult.class);
         startActivity(search_intent);
     }
 }

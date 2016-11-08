@@ -24,7 +24,7 @@ public class Login extends AppCompatActivity {
 
         // create DB and table
         mDB = openOrCreateDatabase("myDB.db",MODE_PRIVATE,null);
-        //mDB.execSQL("drop table if exists my_table");
+        mDB.execSQL("drop table if exists my_table");
         mDB.execSQL("create table my_table (_id integer primary key autoincrement, "
                 + "id text not null, pass int not null);");
         // insert data into DB
