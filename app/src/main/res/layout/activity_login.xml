@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.mju.embeded.login">
+    tools:context="com.example.mju.embeded.Login">
 
     <!-- Login progress -->
 
@@ -39,5 +39,6 @@
         android:text="SIGN UP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/login_SIGN" />
+        android:id="@+id/login_SIGN"
+        android:onClick="onClickSignup"/>
 </LinearLayout>
