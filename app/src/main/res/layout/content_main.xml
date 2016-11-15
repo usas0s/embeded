@@ -12,7 +12,8 @@
     android:paddingTop="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.mju.embeded.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/app_bar_main"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
