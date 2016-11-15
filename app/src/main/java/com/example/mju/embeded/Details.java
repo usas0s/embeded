@@ -28,24 +28,5 @@ public class Details extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-//        ImageView img = (ImageView)findViewById(R.id.imageView1);
-//        Resources res = getResources();
-//
-//        Bitmap bitmap = BitmapFactory.decodeResource(res, android.R.drawable.btn_star_big_on);
-//        Bitmap bitmap2 = Bitmap.createScaledBitmap(bitmap, 200, 90, false);
-//        img.setImageBitmap(bitmap2);
-
-//        BitmapFactory.Options opts = new BitmapFactory.Options();
-//        opts.inPreferredConfig = Bitmap.Config.ARGB_8888;
-//        Bitmap bmp = BitmapFactory.decodeResource(getResources(),
-//                R.drawable.img1, opts);
-//        ImageView view = (ImageView) findViewById(R.id.imageView1);
-//        view.setImageBitmap(bmp);
-
-//        <ImageView
-//        android:layout_width="match_parent"
-//        android:layout_height="match_parent"
-//        android:id="@+id/imageView1"/>
     }
 }
