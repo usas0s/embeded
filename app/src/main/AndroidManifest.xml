@@ -9,12 +9,11 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:hardwareAccelerated="false"
-        >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -37,7 +36,11 @@
             android:name=".Login_ContentProvider"
             android:authorities="com.example.mju.embeded"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
+
+        <activity
+            android:name=".Login_Register"
+            android:label="Register"/>
     </application>
 
 </manifest>
