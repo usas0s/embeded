@@ -18,7 +18,7 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/login_ID"
-        android:hint="Email@localhost.com"/>
+        android:hint="ID"/>
 
     <EditText
         android:layout_width="match_parent"

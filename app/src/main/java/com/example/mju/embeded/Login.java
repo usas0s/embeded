@@ -1,101 +1,68 @@
 package com.example.mju.embeded;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import java.util.HashMap;
 
 
 public class Login extends AppCompatActivity {
+    private static final String URI = "content://com.example.mju.embeded/login_DB";
     private SQLiteDatabase mDB;
     public final static String ID ="hello";
     public final static String PASSWORD ="1234";
-    private Cursor mCursor;
-
+    private ContentResolver cr;
+    private EditText editText1;
+    private EditText editText2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        // create DB and table
-        mDB = openOrCreateDatabase("myDB.db",MODE_PRIVATE,null);
-        mDB.execSQL("drop table if exists my_table");
-        mDB.execSQL("create table my_table (_id integer primary key autoincrement, "
-                + "id text not null, pass int not null);");
-        // insert data into DB
-        mDB.execSQL("insert into my_table(id, pass) values ('hello', 1234);");
-        /*
-        ContentValues v = new ContentValues();
-        v.put("name", "seung");
-        v.put("age", 20);
-        mDB.insert("my_table", null, v);
-        */
+}
+    //입력된 id, password가 db상에 존재하는지 탐색하는 메소드.
+    //return :일치하는 db행의 Cursor
+    public Cursor search(String id, String password){
+        Cursor mCursor;
+        cr =getContentResolver();
+        mCursor = cr.query(Uri.parse(URI), null, "id =\""+id+"\"", null, null);
+        if(mCursor.getCount()!=0) {
+            while(mCursor.moveToNext()){
+                if(mCursor.getString(mCursor.getColumnIndex("pass")).equals(password)){
+                    return mCursor;
+                }
+            }
+        }
+        return null;
     }
 
-    public void login(String id, String password){
-
-        Toast toast2 = Toast.makeText(this, id+"님 환영합니다.", Toast.LENGTH_SHORT);
-        toast2.show();
-    }
-
-        //로그인 ID, 비밀번호가 일치하는지 확인하는 메소드.
+    //로그인
     public void onCilckLogin(View view) {
-        String id;
-        String password;
-        EditText _id =(EditText)findViewById(R.id.login_ID);
-        EditText _password =(EditText)findViewById(R.id.login_PASS);
+        Cursor mCursor;
+        editText1 =(EditText)findViewById(R.id.login_ID);
+        editText2 =(EditText)findViewById(R.id.login_PASS);
+        String id =editText1.getText().toString();
+        String password = editText2.getText().toString();
 
-        id = _id.getText().toString();
-        password = _password.getText().toString();
-
-        /*
-        if(id.equals(ID)){
-            if (password.equals(PASSWORD)){
-                login(id, password);
-                return;
-            }
+        //TODO 로그인동작 추가하기
+        if((mCursor =search(id, password))!=null)
+            //후에 추가할 동작에서 다음과 같이 mCursor이용.
+            Toast.makeText(this, mCursor.getString(mCursor.getColumnIndex("name"))+"님 환영합니다.", Toast.LENGTH_SHORT).show();
+        else{
+            editText1.setText(null);
+            editText2.setText(null);
+            Toast.makeText(this,"존재하지 않는 id 또는 password입니다.", Toast.LENGTH_SHORT ).show();
         }
-        */
-        mCursor = mDB.query("my_table",
-                new String[] {"id","pass"},
-                null,   // selection
-                null,   // selection args
-                null,   // groupby
-                null,  // having
-                "_id", // oderBy
-                "5");
-
-        if(mCursor != null) {
-            if (mCursor.moveToFirst()) {
-                HashMap<String,String> item = new HashMap<String,String>();
-                do {
-                    if(mCursor.getString(0).equals(id)){
-                        if(mCursor.getString(1).equals(password)){
-                            login(id,password);
-                            return;
-                        }
-                    }
-                } while (mCursor.moveToNext());
-            }
-        }
-
-        Toast toast = Toast.makeText(this, "로그인에 실패하였습니다.", Toast.LENGTH_SHORT);
-        toast.show();
     }
 
     public void onClickSignup(View view) {
-        EditText id = (EditText)findViewById(R.id.login_ID);
-        EditText pass = (EditText)findViewById(R.id.login_PASS);
-
-        ContentValues v = new ContentValues();
-        v.put("id", id.getText().toString());
-        v.put("pass", pass.getText().toString());
-        mDB.insert("my_table", null, v);
-
+        Intent intent = new Intent(this, Login_Register.class);
+        startActivity(intent);
     }
 }
