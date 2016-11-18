@@ -64,7 +64,7 @@
 
         <activity
             android:name=".Login_Register"
-            android:label="Register"/>
+            android:label="회원가입"/>
             android:exported="true" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

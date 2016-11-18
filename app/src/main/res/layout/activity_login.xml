@@ -18,7 +18,7 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/login_ID"
-        android:hint="ID"/>
+        android:hint="아이디"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -26,17 +26,17 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/login_PASS"
-        android:hint="password"/>
+        android:hint="비밀번호"/>
 
     <Button
-        android:text="LOGIN"
+        android:text="로그인"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/login_DONE"
         android:onClick="onCilckLogin"/>
 
     <Button
-        android:text="SIGN UP"
+        android:text="회원가입"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/login_SIGN"
