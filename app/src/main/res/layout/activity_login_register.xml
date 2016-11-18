@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:id="@+id/register_DEPART"
-        android:hint="Depart"
+        android:hint="학과"
         android:layout_below="@+id/register_NAME"
         android:layout_alignParentStart="true"
         android:inputType="text" />
@@ -58,7 +58,7 @@
         android:inputType="phone"
         android:ems="10"
         android:id="@+id/register_PHONE"
-        android:hint="PhoneNumber"
+        android:hint="전화번호"
         android:layout_below="@+id/register_DEPART"
         android:layout_alignParentStart="true" />
 
@@ -68,21 +68,11 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/register_EMAIL"
-        android:hint="Email"
+        android:hint="매일주소"
         android:layout_below="@+id/register_PHONE"
         android:layout_alignParentStart="true">
         <requestFocus />
     </EditText>
-
-    <Button
-        android:text="Register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/register_DONE"
-        android:onClick="onCilckRegister"
-        android:layout_below="@+id/register_EMAIL"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="27dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -90,8 +80,27 @@
         android:inputType="text"
         android:ems="10"
         android:id="@+id/register_NAME"
-        android:hint="Name"
+        android:hint="이름"
         android:layout_below="@+id/register_PASS2"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:text="위 개인정보 활용에 동의하십니까?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_EMAIL"
+        android:layout_alignParentStart="true"
+        android:id="@+id/checkBox"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="완료!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/register_DONE"
+        android:onClick="onCilckRegister"
+        android:layout_marginTop="46dp"
+        android:layout_below="@+id/checkBox"
         android:layout_alignParentStart="true" />
 
 

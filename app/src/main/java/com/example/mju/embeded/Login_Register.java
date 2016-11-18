@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class Login_Register extends AppCompatActivity {
     private EditText _depart;
     private EditText _phone;
     private EditText _email;
+    private CheckBox ch1;
     private ContentResolver cr;
 
     @Override
@@ -54,6 +56,7 @@ public class Login_Register extends AppCompatActivity {
         String phone = _phone.getText().toString();
         _email =(EditText)findViewById(R.id.register_EMAIL);
         String email = _email.getText().toString();
+        ch1 = (CheckBox)findViewById(R.id.checkBox);
 
         //공백일때.
         if(id.equals("")) {
@@ -124,6 +127,12 @@ public class Login_Register extends AppCompatActivity {
             _id.requestFocus();
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+            return;
+        }
+
+        //이용약관 동의.
+        if(!ch1.isChecked()){
+            Toast.makeText(this, "이용약관에 동의해주십시오.", Toast.LENGTH_SHORT).show();
             return;
         }
 
