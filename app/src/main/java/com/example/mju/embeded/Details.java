@@ -28,8 +28,6 @@ public class Details extends AppCompatActivity {
             // floating 버튼 터치 시 참가 신청 페이지 열림.
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "참가 신청하기", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
                 Snackbar snackbar;
                 snackbar = Snackbar.make(view, "참가 신청하기", Snackbar.LENGTH_LONG)
                         .setAction("Action", new View.OnClickListener()
@@ -38,13 +36,13 @@ public class Details extends AppCompatActivity {
                             @Override
                             public void onClick(View view)
                             {
-                                Toast.makeText(getApplicationContext(),"moving to Apply activity",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(),"참가 신청 페이지로 이동합니다.",Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(getApplicationContext(),Apply.class);
                                 startActivity(intent);
                             }
                         });
                 View snackView = snackbar.getView();
-                snackView.setBackgroundColor(Color.parseColor("#0000FF"));
+                snackView.setBackgroundColor(Color.parseColor("#3498DB"));
                 snackbar.show();
             }
         });

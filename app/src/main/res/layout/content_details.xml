@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/item_margin"
             android:textColor="#E74C3C"
-            android:text="모임기간"/>
+            android:text="@string/period"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,26 +31,31 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/item_margin"
             android:textColor="#3498DB"
-            android:text="모임장소"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:text="@string/place"/>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/text_margin"
-            android:text="[안양창조경제융합센터] 경기 안양시 동안구 관양동 1744 3층 에이큐브"/>
-        <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/gps"
-            android:onClick="showMap"
-            android:scaleType="fitCenter"
-            android:background="@android:color/transparent"/>
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:text="[안양창조경제융합센터] 경기 안양시 동안구 관양동 1744 3층 에이큐브"/>
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/gps"
+                android:onClick="showMap"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/item_margin"
             android:textColor="#58D68D"
-            android:text="신청인원"/>
+            android:text="@string/limit"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
