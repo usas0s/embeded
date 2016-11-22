@@ -23,7 +23,7 @@ public final class Login_Contract {
     public static abstract class FeedEntry implements BaseColumns {
         public static final String TABLE_NAME = "User";
         public static final String _ID = "_id";
-        public static final String COLUMN_NAME_ID = "id";
+        public static final String COLUMN_NAME_ID = "owner_id";
         public static final String COLUMN_NAME_PASS = "pass";
         public static final String COLUMN_NAME_NAME = "name";
         public static final String COLUMN_NAME_DEPART = "depart";
