@@ -20,11 +20,16 @@
             android:layout_margin="@dimen/item_margin"
             android:textColor="#E74C3C"
             android:text="@string/period"/>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/text_margin"-->
+            <!--android:text="12월 2일 (금) 19시 00분 ~ 12월 4일 (일) 16시 00분"/>-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/text_margin"
-            android:text="12월 2일 (금) 19시 00분 ~ 12월 4일 (일) 16시 00분"/>
+            android:id="@+id/detail_period"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,18 +41,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+            <!--<TextView-->
+                <!--android:layout_width="300dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="@dimen/text_margin"-->
+                <!--android:text="[안양창조경제융합센터] 경기 안양시 동안구 관양동 1744 3층 에이큐브"/>-->
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/text_margin"
-                android:text="[안양창조경제융합센터] 경기 안양시 동안구 관양동 1744 3층 에이큐브"/>
+                android:id="@+id/detail_place"/>
             <ImageButton
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/gps"
                 android:onClick="showMap"
                 android:scaleType="fitCenter"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent" />
+            <!--<ImageButton-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:onClick="sendShare"/>-->
         </LinearLayout>
 
         <TextView
@@ -56,22 +70,52 @@
             android:layout_margin="@dimen/item_margin"
             android:textColor="#58D68D"
             android:text="@string/limit"/>
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/text_margin"
-            android:text="총 60명 | 2명 신청가능"/>
+            android:orientation="horizontal">
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="@dimen/text_margin"-->
+                <!--android:text="총 60명 |"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text=" 2명 신청가능"/>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:id="@+id/detail_limit"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_current"
+                android:text=" 2명 신청가능"/>
+        </LinearLayout>
 
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/text_margin"-->
+            <!--android:text="@string/large_text" />-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
-            android:text="@string/large_text" />
+            android:id="@+id/detail_description"/>
 
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/resizeacube1"-->
+            <!--android:scaleType="fitCenter"/>-->
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/resizeacube1"
+            android:id="@+id/detail_image"
             android:scaleType="fitCenter"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
