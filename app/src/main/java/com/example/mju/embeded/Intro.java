@@ -12,9 +12,8 @@ public class Intro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //rand = Math.random();
-        //Toast.makeText(this, (int)rand, Toast.LENGTH_SHORT);
         setContentView(R.layout.activity_intro);
+
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

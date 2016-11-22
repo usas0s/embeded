@@ -57,7 +57,8 @@ public class Login extends AppCompatActivity {
         else{
             editText1.setText(null);
             editText2.setText(null);
-            Toast.makeText(this,"존재하지 않는 id 또는 password입니다.", Toast.LENGTH_SHORT ).show();
+            Toast.makeText(this, (int)Math.random() *10, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"존재하지 않는 id 또는 password입니다.", Toast.LENGTH_SHORT ).show();
         }
     }
 
