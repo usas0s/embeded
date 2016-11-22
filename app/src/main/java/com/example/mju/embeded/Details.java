@@ -35,6 +35,8 @@ public class Details extends AppCompatActivity {
             // floating 버튼 터치 시 참가 신청 페이지 열림.
             @Override
             public void onClick(View view) {
+//                Snackbar.make(view, "참가 신청하기", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
                 Snackbar snackbar;
                 snackbar = Snackbar.make(view, "참가 신청하기", Snackbar.LENGTH_LONG)
                         .setAction("Action", new View.OnClickListener()
