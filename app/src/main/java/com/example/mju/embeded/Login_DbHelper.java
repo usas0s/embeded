@@ -16,7 +16,7 @@ public class Login_DbHelper extends SQLiteOpenHelper {
 
     public void onCreate(SQLiteDatabase db)
     {
-        db.execSQL(Login_Contract.SQL_DELETE_TABLE);
+        //db.execSQL(Login_Contract.SQL_DELETE_TABLE);
         db.execSQL(Login_Contract.SQL_CREATE_TABLE);
     }
 

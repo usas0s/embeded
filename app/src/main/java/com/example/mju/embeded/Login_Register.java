@@ -120,7 +120,7 @@ public class Login_Register extends AppCompatActivity {
         }
 
         //이미 존재하는 id인지 확인.
-        mCursor = cr.query(Uri.parse(URI), null, "id =\""+id+"\"", null, null);
+        mCursor = cr.query(Uri.parse(URI), null, "owner_id =\""+id+"\"", null, null);
         if(mCursor.getCount()>0){
             Toast.makeText(this, "이미 존재하는 ID입니다.", Toast.LENGTH_SHORT).show();
             _id.setText(null);

@@ -48,6 +48,7 @@ public class Login_ContentProvider extends ContentProvider {
         mDB = loginDB.getWritableDatabase();
         loginDB.onCreate(mDB);
 
+        /*
         ContentValues v = new ContentValues();
         v.put(Login_Contract.FeedEntry.COLUMN_NAME_ID, "admin");
         v.put(Login_Contract.FeedEntry.COLUMN_NAME_PASS, "1234");
@@ -64,6 +65,7 @@ public class Login_ContentProvider extends ContentProvider {
         v.put(Login_Contract.FeedEntry.COLUMN_NAME_PHONE, "01050502438");
         v.put(Login_Contract.FeedEntry.COLUMN_NAME_EMAIL, "demo@naver.com");
         mDB.insert(Login_Contract.FeedEntry.TABLE_NAME, null, v);
+        */
 
         return (loginDB==null)? false: true;
     }

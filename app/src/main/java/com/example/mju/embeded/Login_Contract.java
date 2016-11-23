@@ -8,7 +8,7 @@ public final class Login_Contract {
 
     public static final String DATABASE_NAME = "login_DB";
     public static final String SQL_CREATE_TABLE =
-            "CREATE TABLE " + FeedEntry.TABLE_NAME + " ( " +
+            "CREATE TABLE IF NOT EXISTS " + FeedEntry.TABLE_NAME + " ( " +
                     FeedEntry._ID + " INTEGER PRIMARY KEY," +
                     FeedEntry.COLUMN_NAME_ID + " text , " +
                     FeedEntry.COLUMN_NAME_PASS + " text ," +
