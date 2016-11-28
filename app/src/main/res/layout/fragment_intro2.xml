@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <!--
+    ~ Copyright (C) 컴퓨터공학과 60132291 오지훈
+    -->
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -10,6 +10,9 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+/*
+         ~ Copyright (C) 컴퓨터공학과 60132291 오지훈
+*/
 
 public class Login_ContentProvider extends ContentProvider {
     private static final String URI = "content://com.example.mju.embeded/login_DB";

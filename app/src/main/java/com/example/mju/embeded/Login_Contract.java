@@ -2,6 +2,10 @@ package com.example.mju.embeded;
 
 import android.provider.BaseColumns;
 
+/*
+         ~ Copyright (C) 컴퓨터공학과 60132291 오지훈
+*/
+
 public final class Login_Contract {
 
     public Login_Contract(){};
