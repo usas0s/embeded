@@ -9,14 +9,19 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Post_ContentProvider extends ContentProvider {
     private static final String URI = "content://com.example.mju.embeded/Post_DB";
     public static final Uri CONTENT_URI = Uri.parse(URI);
     private static final UriMatcher uriMatcher;
+
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI("com.example.mju.embeded", "Post_DB", 1);
     }
+
     private SQLiteDatabase mDB = null;
 
     public Post_ContentProvider() {
@@ -70,7 +75,7 @@ public class Post_ContentProvider extends ContentProvider {
         v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 2);
         mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, v);
 
-        return (mDB ==null)? false: true;
+        return (mDB == null) ? false : true;
     }
 
     @Override
@@ -84,7 +89,7 @@ public class Post_ContentProvider extends ContentProvider {
         else orderBy = sortOrder;
 
         Cursor c = qb.query(mDB, projection, selection, selectionArgs, null, null, orderBy);
-        c.setNotificationUri(getContext().getContentResolver(),uri);
+        c.setNotificationUri(getContext().getContentResolver(), uri);
 
         return c;
     }
@@ -95,4 +100,17 @@ public class Post_ContentProvider extends ContentProvider {
         // TODO: Implement this to handle requests to update one or more rows.
         throw new UnsupportedOperationException("Not yet implemented");
     }
+
+//    public String getPeriod() {
+//        String sql = "select period from post_table where _id = 0;";
+//
+//        query(sql)
+//        if (존재) {
+//            return 찾은 값
+//        } else {
+//            return "미정";
+//        }
+//    }
+
+
 }
