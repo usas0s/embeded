@@ -2,7 +2,7 @@ package com.example.mju.embeded;
 
 import android.graphics.drawable.Drawable;
 
-public class ListViewItem {
+public class Search_ListViewItem {
     private Drawable iconDrawable ;
     private String titleStr ;
     private String descStr ;

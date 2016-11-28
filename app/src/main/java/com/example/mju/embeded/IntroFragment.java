@@ -9,13 +9,16 @@ import android.view.ViewGroup;
 import java.util.Random;
 
 
-public class IntrtoFragment extends Fragment {
+public class IntroFragment extends Fragment {
+    private View v;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View v = inflater.inflate(R.layout.fragment_intrto1, container, true);
+        Random r = new Random();
+        int t = r.nextInt(9);
+        if(t>4)  v = inflater.inflate(R.layout.fragment_intro1, container, true);
+        else v = inflater.inflate(R.layout.fragment_intro2, container, true);
         return v;
     }
 

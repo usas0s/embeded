@@ -15,12 +15,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ListViewAdapter extends BaseAdapter {
+public class Search_ListViewAdapter extends BaseAdapter {
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
-    private ArrayList<ListViewItem> listViewItemList = new ArrayList<ListViewItem>() ;
+    private ArrayList<Search_ListViewItem> listViewItemList = new ArrayList<Search_ListViewItem>() ;
 
     // ListViewAdapter의 생성자
-    public ListViewAdapter() {
+    public Search_ListViewAdapter() {
 
     }
 
@@ -48,7 +48,7 @@ public class ListViewAdapter extends BaseAdapter {
         TextView descTextView = (TextView) convertView.findViewById(R.id.textView2) ;
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
-        ListViewItem listViewItem = listViewItemList.get(position);
+        Search_ListViewItem listViewItem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
         iconImageView.setImageDrawable(listViewItem.getIcon());
@@ -72,7 +72,7 @@ public class ListViewAdapter extends BaseAdapter {
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
     public void addItem(Drawable icon, String title, String desc) {
-        ListViewItem item = new ListViewItem();
+        Search_ListViewItem item = new Search_ListViewItem();
 
         item.setIcon(icon);
         item.setTitle(title);
