@@ -66,51 +66,48 @@ public class Details extends AppCompatActivity {
             }
         });
 
-        // 썸네일 셋팅
-        String path = "acube0";
-        ImageView iv_thumbnail = (ImageView)findViewById(R.id.detail_thumbnail);
-        int resID = getResources().getIdentifier(path,"drawable",getPackageName());
-        iv_thumbnail.setImageResource(resID);
-//        -> 한줄로 수정하면 iv_thumbnail.setImageResource(getResources().getIdentifier(DB.image_path,"drawable",getPackageName()));
+        // DB 검색 후 결과 저장
+        ArrayList<HashMap<String, Object>> list = selectList();
+        HashMap<String, Object> hashMap = list.get(0);
 
-//        iv_thumbnail.setImageResource(R.drawable.acube0); // DB's image_path 받는걸로 수정
+        // 모임명 셋팅
+        setTitle(hashMap.get("post_name").toString());
+
+        // 썸네일 셋팅
+        ImageView iv_thumbnail = (ImageView)findViewById(R.id.detail_thumbnail);
+        String path = hashMap.get("img_path").toString()+"0";
+        System.out.println("★★image file name = "+path);
+//        int resID = getResources().getIdentifier(hashMap.get("img_path").toString(),"drawable",getPackageName());
+        iv_thumbnail.setImageResource(getResources().getIdentifier(path,"drawable",getPackageName()));
 
         // 모임 기간 셋팅
-//        String temp[] = {"img_path"};
-//        mCursor = mDB.query("post_table",temp,null,null,null,null,null);
-//        mCursor.moveToFirst();
-//        String period = mCursor.getString(0);
-        ArrayList<HashMap<String, Object>> list = selectList();
-
         TextView tv_period = (TextView) findViewById(R.id.detail_period);
         System.out.println("★ list_empty = " + list.isEmpty() + " size = " + list.size());
-//        tv_period.setText("기간");
-        HashMap<String, Object> hashMap = list.get(0);
-        tv_period.setText(hashMap.get("owner_id").toString());
+        tv_period.setText(hashMap.get("period").toString());
 
         // 모임 장소 셋팅
         TextView tv_place = (TextView) findViewById(R.id.detail_place);
-        tv_place.setText("DB.place");
+//        tv_place.setText("DB.place");
+        tv_place.setText(hashMap.get("place").toString());
 
         // 최대 인원 셋팅
         TextView tv_limit = (TextView) findViewById(R.id.detail_limit);
-        tv_limit.setText("총 DB.limit명 | ");
+        tv_limit.setText("총 " + hashMap.get("limitation").toString() + "명 | ");
 
         // 현재 인원 셋팅
         TextView tv_current = (TextView) findViewById(R.id.detail_current);
-        tv_current.setText("DB.current명 신청 가능");
+        tv_current.setText(hashMap.get("present").toString() + "명 신청 가능");
 
         // 상세 설명 셋팅
         TextView tv_description = (TextView) findViewById(R.id.detail_description);
-        tv_description.setText("DB.description");
+//        tv_description.setText("DB.description");
+        tv_description.setText(hashMap.get("description").toString());
 
         // 설명 이미지 셋팅
         ImageView iv_image = (ImageView)findViewById(R.id.detail_image);
-//        String path = DB.image_path;
-        String path2 = "in";
-        int resID2 = getResources().getIdentifier(path2,"drawable",getPackageName());
-        iv_image.setImageResource(resID2);
-//        -> 한줄로 수정하면 iv_thumbnail.setImageResource(getResources().getIdentifier(DB.image_path,"drawable",getPackageName()));
+        path = hashMap.get("img_path").toString()+"1";
+        System.out.println("★★image file name 2 = "+path);
+        iv_image.setImageResource(getResources().getIdentifier(path,"drawable",getPackageName()));
     }
 
     public void showMap(View view)
