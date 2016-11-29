@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:focusable="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/acube0"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="모임명"
+                android:layout_marginTop="20dp"
+                android:textSize="40sp"
+                android:gravity="center_horizontal"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp">
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:text="이름 : "
+                android:textSize="13sp"
+                android:gravity="center_vertical|right"/>
+            <EditText
+                android:id="@+id/user_name"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:cursorVisible="true"
+                android:inputType="text"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp">
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:text="핸드폰번호 : "
+                android:textSize="13sp"
+                android:gravity="center_vertical|right"/>
+            <EditText
+                android:id="@+id/user_phone"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:cursorVisible="true"
+                android:inputType="phone"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp">
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:text="이메일 : "
+                android:textSize="13sp"
+                android:gravity="center_vertical|right"/>
+            <EditText
+                android:id="@+id/user_email"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:cursorVisible="true"
+                android:inputType="textEmailAddress" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom">
+
+            <CheckBox
+                android:id="@+id/cb_agree"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom|center"
+                android:text="저는 모임에 반드시 참석하겠습니다!"
+                />
+            <Button
+                android:id="@+id/btn_agreeJoin"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom|center"
+                android:text="신청 완료"
+                android:textSize="15sp"
+                android:background="@color/blue"
+                android:textColor="@color/white"
+                android:onClick="onClickApply"
+                android:layout_marginBottom="30dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

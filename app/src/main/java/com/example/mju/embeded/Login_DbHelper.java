@@ -4,6 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/*
+         ~ Copyright (C) 컴퓨터공학과 60132291 오지훈
+*/
+
 public class Login_DbHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.

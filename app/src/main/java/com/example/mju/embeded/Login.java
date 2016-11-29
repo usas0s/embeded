@@ -16,6 +16,10 @@ import android.widget.Toast;
 import java.util.Random;
 
 
+/*
+        ~ Copyright (C) 컴퓨터공학과 60132291 오지훈
+*/
+
 public class Login extends AppCompatActivity {
     static Context Lcontext;
     private static final String URI = "content://com.example.mju.embeded/login_DB";

@@ -11,6 +11,9 @@ import android.provider.BaseColumns;
 import android.text.TextUtils;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Post_ContentProvider extends ContentProvider {
     private static final String URI = "content://com.example.mju.embeded/Post_DB";
     public static final Uri CONTENT_URI = Uri.parse(URI);
@@ -50,7 +53,30 @@ public class Post_ContentProvider extends ContentProvider {
         mDB = postDB.getWritableDatabase();
         postDB.onCreate(mDB);
 
-        return (postDB == null) ? false : true;
+        ContentValues v = new ContentValues();
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "1st post");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 6);
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 6);
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "1st desc");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 1);
+        mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, v);
+
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "2nd post");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 6);
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 6);
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "2nd desc");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 2);
+        mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, v);
+
+        return (mDB == null) ? false : true;
     }
 
     @Override

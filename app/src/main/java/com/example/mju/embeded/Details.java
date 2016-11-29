@@ -3,6 +3,8 @@ package com.example.mju.embeded;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -19,9 +21,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Details extends AppCompatActivity {
+    private SQLiteDatabase mDB;
+    Post_DbHelper mDbHelper;
+    Cursor mCursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,12 @@ public class Details extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // DB 연동
+        mDbHelper = new Post_DbHelper(this);
+        mDB = mDbHelper.getWritableDatabase();
+//        mDbHelper.onCreate(mDB);
+
+        // FAB
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             // floating 버튼 터치 시 참가 신청 페이지 열림.
@@ -57,9 +69,8 @@ public class Details extends AppCompatActivity {
         });
 
         // 썸네일 셋팅
-        ImageView iv_thumbnail = (ImageView)findViewById(R.id.detail_thumbnail);
-//        String path = DB.image_path;
         String path = "acube0";
+        ImageView iv_thumbnail = (ImageView)findViewById(R.id.detail_thumbnail);
         int resID = getResources().getIdentifier(path,"drawable",getPackageName());
         iv_thumbnail.setImageResource(resID);
 //        -> 한줄로 수정하면 iv_thumbnail.setImageResource(getResources().getIdentifier(DB.image_path,"drawable",getPackageName()));
@@ -67,8 +78,14 @@ public class Details extends AppCompatActivity {
 //        iv_thumbnail.setImageResource(R.drawable.acube0); // DB's image_path 받는걸로 수정
 
         // 모임 기간 셋팅
+//        String temp[] = {"img_path"};
+//        mCursor = mDB.query("post_table",temp,null,null,null,null,null);
+//        mCursor.moveToFirst();
+//        String period = mCursor.getString(0);
+//        ArrayList<HashMap<String, Object>> list = selectList();
         TextView tv_period = (TextView) findViewById(R.id.detail_period);
-        tv_period.setText("DB.period");
+        tv_period.setText("기간");
+//        tv_period.setText(list.get(0).toString());
 
         // 모임 장소 셋팅
         TextView tv_place = (TextView) findViewById(R.id.detail_place);
@@ -135,4 +152,26 @@ public class Details extends AppCompatActivity {
 //        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, shareIntentList.toArray(new Parcelable[]{}));
 //        startActivity(chooserIntent);
 //    }
+
+    public ArrayList<HashMap<String, Object>> selectList() {
+        HashMap<String, Object> map;
+        ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+        String[] column = {"owner_id", "post_name", "img_path"};
+        Cursor cursor = null;
+        try {
+            cursor = mDB.query("post_table", column, null, null, null, null, null);
+            while (cursor.moveToNext()) {
+                map = new HashMap<String, Object>();
+                map.put("owner_id", cursor.getString(0));
+                map.put("post_name", cursor.getString(1));
+                map.put("img_path", cursor.getString(2));
+                list.add(map);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) cursor.close();
+        }
+        return list;
+    }
 }

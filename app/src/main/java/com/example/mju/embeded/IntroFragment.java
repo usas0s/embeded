@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 
 import java.util.Random;
 
+/*
+         ~ Copyright (C) 컴퓨터공학과 60132291 오지훈
+*/
+
 
 public class IntroFragment extends Fragment {
     private View v;
