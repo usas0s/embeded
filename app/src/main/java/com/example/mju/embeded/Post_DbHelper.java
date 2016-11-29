@@ -16,7 +16,7 @@ public class Post_DbHelper extends SQLiteOpenHelper {
 
     public void onCreate(SQLiteDatabase db)
     {
-        db.execSQL(Post_Contract.SQL_PRAGMA_ON);
+//        db.execSQL(Post_Contract.SQL_PRAGMA_ON);
         db.execSQL(Post_Contract.SQL_DELETE_TABLE);
         db.execSQL(Post_Contract.SQL_CREATE_TABLE);
     }

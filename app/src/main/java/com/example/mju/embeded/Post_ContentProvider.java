@@ -7,16 +7,20 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.provider.BaseColumns;
 import android.text.TextUtils;
+
 
 public class Post_ContentProvider extends ContentProvider {
     private static final String URI = "content://com.example.mju.embeded/Post_DB";
     public static final Uri CONTENT_URI = Uri.parse(URI);
     private static final UriMatcher uriMatcher;
+
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI("com.example.mju.embeded", "Post_DB", 1);
+        uriMatcher.addURI("com.example.mju.embeded", "login_DB", 1);
     }
+
     private SQLiteDatabase mDB = null;
 
     public Post_ContentProvider() {
@@ -24,7 +28,6 @@ public class Post_ContentProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        // Implement this to handle requests to delete one or more rows.
         return mDB.delete(Post_Contract.FeedEntry.TABLE_NAME, selection, null);
     }
 
@@ -47,44 +50,20 @@ public class Post_ContentProvider extends ContentProvider {
         mDB = postDB.getWritableDatabase();
         postDB.onCreate(mDB);
 
-        ContentValues v = new ContentValues();
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "1st post");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 6);
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 6);
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "1st desc");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 1);
-        mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, v);
-
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "2nd post");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 6);
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 6);
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "2nd desc");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 2);
-        mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, v);
-
-        return (mDB ==null)? false: true;
+        return (postDB == null) ? false : true;
     }
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {
-
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(Post_Contract.FeedEntry.TABLE_NAME);
         String orderBy;
-        if (TextUtils.isEmpty(sortOrder)) orderBy = Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER;
+        if (TextUtils.isEmpty(sortOrder)) orderBy = "_id";
         else orderBy = sortOrder;
 
         Cursor c = qb.query(mDB, projection, selection, selectionArgs, null, null, orderBy);
-        c.setNotificationUri(getContext().getContentResolver(),uri);
+        c.setNotificationUri(getContext().getContentResolver(), uri);
 
         return c;
     }

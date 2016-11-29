@@ -71,10 +71,18 @@ public class Search_ListViewAdapter extends BaseAdapter {
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(Drawable icon, String title, String desc) {
+//    public void addItem(Drawable icon, String title, String desc) {
+//        Search_ListViewItem item = new Search_ListViewItem();
+//
+//        item.setIcon(icon);
+//        item.setTitle(title);
+//        item.setDesc(desc);
+//
+//        listViewItemList.add(item);
+//    }
+    public void addItem(String title, String desc) {
         Search_ListViewItem item = new Search_ListViewItem();
 
-        item.setIcon(icon);
         item.setTitle(title);
         item.setDesc(desc);
 
