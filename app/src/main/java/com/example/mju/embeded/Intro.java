@@ -5,6 +5,10 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+/*
+        ~ Copyright (C) 컴퓨터공학과 60132291 오지훈
+*/
+
 public class Intro extends AppCompatActivity {
     private double rand;
 

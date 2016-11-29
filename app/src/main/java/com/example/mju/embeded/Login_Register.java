@@ -17,6 +17,10 @@ import android.widget.Toast;
 
 import java.util.regex.Pattern;
 
+/*
+         ~ Copyright (C) 컴퓨터공학과 60132291 오지훈
+*/
+
 public class Login_Register extends AppCompatActivity {
 
     private static final String URI = "content://com.example.mju.embeded/login_DB";
