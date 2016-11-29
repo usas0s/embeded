@@ -55,25 +55,14 @@ public class Post_ContentProvider extends ContentProvider {
 
         ContentValues v = new ContentValues();
         v.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "1st post");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "게임잼");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "acube0");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "11월");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "강남역");
         v.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 6);
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 6);
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "1st desc");
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 3);
+        v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "내용");
         v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 1);
-        mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, v);
-
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "2nd post");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 6);
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 6);
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "2nd desc");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 2);
         mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, v);
 
         return (mDB == null) ? false : true;

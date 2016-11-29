@@ -78,14 +78,14 @@ public class Details extends AppCompatActivity {
 //        iv_thumbnail.setImageResource(R.drawable.acube0); // DB's image_path 받는걸로 수정
 
         // 모임 기간 셋팅
-//        String temp[] = {"img_path"};
+        String temp[] = {"img_path"};
 //        mCursor = mDB.query("post_table",temp,null,null,null,null,null);
 //        mCursor.moveToFirst();
 //        String period = mCursor.getString(0);
 //        ArrayList<HashMap<String, Object>> list = selectList();
         TextView tv_period = (TextView) findViewById(R.id.detail_period);
         tv_period.setText("기간");
-//        tv_period.setText(list.get(0).toString());
+//        tv_period.setText(list.size());
 
         // 모임 장소 셋팅
         TextView tv_place = (TextView) findViewById(R.id.detail_place);
@@ -160,11 +160,12 @@ public class Details extends AppCompatActivity {
         Cursor cursor = null;
         try {
             cursor = mDB.query("post_table", column, null, null, null, null, null);
+            System.out.println("cursor getCount = " + cursor.getCount());
             while (cursor.moveToNext()) {
                 map = new HashMap<String, Object>();
-                map.put("owner_id", cursor.getString(0));
-                map.put("post_name", cursor.getString(1));
-                map.put("img_path", cursor.getString(2));
+                map.put("owner_id", cursor.getString(1));
+                map.put("post_name", cursor.getString(2));
+                map.put("img_path", cursor.getString(3));
                 list.add(map);
             }
         } catch (Exception e) {
