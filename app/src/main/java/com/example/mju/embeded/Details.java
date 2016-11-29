@@ -47,8 +47,6 @@ public class Details extends AppCompatActivity {
             // floating 버튼 터치 시 참가 신청 페이지 열림.
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "참가 신청하기", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
                 Snackbar snackbar;
                 snackbar = Snackbar.make(view, "참가 신청하기", Snackbar.LENGTH_LONG)
                         .setAction("Action", new View.OnClickListener()
@@ -78,14 +76,17 @@ public class Details extends AppCompatActivity {
 //        iv_thumbnail.setImageResource(R.drawable.acube0); // DB's image_path 받는걸로 수정
 
         // 모임 기간 셋팅
-        String temp[] = {"img_path"};
+//        String temp[] = {"img_path"};
 //        mCursor = mDB.query("post_table",temp,null,null,null,null,null);
 //        mCursor.moveToFirst();
 //        String period = mCursor.getString(0);
-//        ArrayList<HashMap<String, Object>> list = selectList();
+        ArrayList<HashMap<String, Object>> list = selectList();
+
         TextView tv_period = (TextView) findViewById(R.id.detail_period);
-        tv_period.setText("기간");
-//        tv_period.setText(list.size());
+        System.out.println("★ list_empty = " + list.isEmpty() + " size = " + list.size());
+//        tv_period.setText("기간");
+        HashMap<String, Object> hashMap = list.get(0);
+        tv_period.setText(hashMap.get("owner_id").toString());
 
         // 모임 장소 셋팅
         TextView tv_place = (TextView) findViewById(R.id.detail_place);
@@ -156,16 +157,35 @@ public class Details extends AppCompatActivity {
     public ArrayList<HashMap<String, Object>> selectList() {
         HashMap<String, Object> map;
         ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
-        String[] column = {"owner_id", "post_name", "img_path"};
+        String[] column = {"owner_id", "post_name", "img_path", "period", "place", "limitation", "present", "description", "post_number"};
         Cursor cursor = null;
         try {
             cursor = mDB.query("post_table", column, null, null, null, null, null);
-            System.out.println("cursor getCount = " + cursor.getCount());
-            while (cursor.moveToNext()) {
+            System.out.println("★cursor getCount = " + cursor.getCount());
+            System.out.println("★position 1 = " + cursor.getPosition());
+            cursor.moveToFirst();
+            System.out.println("★position 2 = " + cursor.getPosition());
+//            while (cursor.moveToNext())
+            {
+                System.out.println("★position 3 = " + cursor.getPosition());
                 map = new HashMap<String, Object>();
-                map.put("owner_id", cursor.getString(1));
-                map.put("post_name", cursor.getString(2));
-                map.put("img_path", cursor.getString(3));
+                System.out.println("★hash");
+
+                for(int index = 0 ; index < column.length; index++)
+                {
+                    map.put(column[index],cursor.getString(index));
+                    System.out.println("★found " + column[index] + " = " + cursor.getString(index));
+                }
+//                map.put("owner_id", cursor.getString(0));
+//                System.out.println("★found id = " + cursor.getString(0));
+//
+//                map.put("post_name", cursor.getString(1));
+//                System.out.println("★found name = " + cursor.getString(1));
+//
+//                map.put("img_path", cursor.getString(2));
+//                System.out.println("★found path = " + cursor.getString(2));
+
+                System.out.println("★map_empty= " + map.isEmpty());
                 list.add(map);
             }
         } catch (Exception e) {
