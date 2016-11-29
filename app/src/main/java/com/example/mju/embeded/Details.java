@@ -68,6 +68,7 @@ public class Details extends AppCompatActivity {
 
         // DB 검색 후 결과 저장
         ArrayList<HashMap<String, Object>> list = selectList();
+        System.out.println("★ list_empty = " + list.isEmpty() + " size = " + list.size());
         HashMap<String, Object> hashMap = list.get(0);
 
         // 모임명 셋팅
@@ -75,19 +76,20 @@ public class Details extends AppCompatActivity {
 
         // 썸네일 셋팅
         ImageView iv_thumbnail = (ImageView)findViewById(R.id.detail_thumbnail);
-        String path = hashMap.get("img_path").toString()+"0";
+        String path = hashMap.get("img_path").toString()+"0"; // 모임명에 숫자를 붙여 이미지 파일을 선택. 0 = 표지, 1~n = 상세 설명
         System.out.println("★★image file name = "+path);
-//        int resID = getResources().getIdentifier(hashMap.get("img_path").toString(),"drawable",getPackageName());
         iv_thumbnail.setImageResource(getResources().getIdentifier(path,"drawable",getPackageName()));
+
+        // 개설자 ID 셋팅
+        TextView tv_id = (TextView) findViewById(R.id.detail_id);
+        tv_id.setText(hashMap.get("owner_id").toString());
 
         // 모임 기간 셋팅
         TextView tv_period = (TextView) findViewById(R.id.detail_period);
-        System.out.println("★ list_empty = " + list.isEmpty() + " size = " + list.size());
         tv_period.setText(hashMap.get("period").toString());
 
         // 모임 장소 셋팅
         TextView tv_place = (TextView) findViewById(R.id.detail_place);
-//        tv_place.setText("DB.place");
         tv_place.setText(hashMap.get("place").toString());
 
         // 최대 인원 셋팅
@@ -100,13 +102,12 @@ public class Details extends AppCompatActivity {
 
         // 상세 설명 셋팅
         TextView tv_description = (TextView) findViewById(R.id.detail_description);
-//        tv_description.setText("DB.description");
         tv_description.setText(hashMap.get("description").toString());
 
         // 설명 이미지 셋팅
         ImageView iv_image = (ImageView)findViewById(R.id.detail_image);
-        path = hashMap.get("img_path").toString()+"1";
-        System.out.println("★★image file name 2 = "+path);
+        path = hashMap.get("img_path").toString()+"1"; // 모임명에 숫자를 붙여 이미지 파일을 선택. 0 = 표지, 1~n = 상세 설명
+        System.out.println("★★detail image file name = "+path);
         iv_image.setImageResource(getResources().getIdentifier(path,"drawable",getPackageName()));
     }
 
@@ -166,23 +167,16 @@ public class Details extends AppCompatActivity {
             {
                 System.out.println("★position 3 = " + cursor.getPosition());
                 map = new HashMap<String, Object>();
-                System.out.println("★hash");
+                System.out.println("★created HashMap");
 
+                // 모든 column의 정보(column name, value)를 map에 저장. 쉽게 말해 tuple 통째로 저장.
                 for(int index = 0 ; index < column.length; index++)
                 {
                     map.put(column[index],cursor.getString(index));
                     System.out.println("★found " + column[index] + " = " + cursor.getString(index));
                 }
-//                map.put("owner_id", cursor.getString(0));
-//                System.out.println("★found id = " + cursor.getString(0));
-//
-//                map.put("post_name", cursor.getString(1));
-//                System.out.println("★found name = " + cursor.getString(1));
-//
-//                map.put("img_path", cursor.getString(2));
-//                System.out.println("★found path = " + cursor.getString(2));
 
-                System.out.println("★map_empty= " + map.isEmpty());
+                System.out.println("★map_empty = " + map.isEmpty());
                 list.add(map);
             }
         } catch (Exception e) {

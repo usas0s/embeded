@@ -18,13 +18,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/item_margin"
+            android:textColor="#BDBDBD"
+            android:text="@string/ownid"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_margin"
+            android:id="@+id/detail_id"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/item_margin"
             android:textColor="#E74C3C"
             android:text="@string/period"/>
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginLeft="@dimen/text_margin"-->
-            <!--android:text="12월 2일 (금) 19시 00분 ~ 12월 4일 (일) 16시 00분"/>-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
