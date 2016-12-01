@@ -23,10 +23,9 @@
     <GridView
         android:id="@+id/main_gridView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:numColumns="2"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp">
-    </GridView>
+        android:layout_height="match_parent"
+        android:isScrollContainer="false"
+        android:numColumns="2"/>
+
 
 </LinearLayout>
