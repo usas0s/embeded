@@ -26,8 +26,9 @@ import java.util.List;
 
 public class Details extends AppCompatActivity {
     private SQLiteDatabase mDB;
-    Post_DbHelper mDbHelper;
-    Cursor mCursor;
+    private Post_DbHelper mDbHelper;
+    //private Cursor mCursor;
+    private ArrayList<HashMap<String, Object>> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class Details extends AppCompatActivity {
         });
 
         // DB 검색 후 결과 저장
-        ArrayList<HashMap<String, Object>> list = selectList();
+        list = selectList(3);
         System.out.println("★ list_empty = " + list.isEmpty() + " size = " + list.size());
         HashMap<String, Object> hashMap = list.get(0);
 
@@ -92,13 +93,9 @@ public class Details extends AppCompatActivity {
         TextView tv_place = (TextView) findViewById(R.id.detail_place);
         tv_place.setText(hashMap.get("place").toString());
 
-        // 최대 인원 셋팅
+        // 최대 | 현재 인원 셋팅
         TextView tv_limit = (TextView) findViewById(R.id.detail_limit);
-        tv_limit.setText("총 " + hashMap.get("limitation").toString() + "명 | ");
-
-        // 현재 인원 셋팅
-        TextView tv_current = (TextView) findViewById(R.id.detail_current);
-        tv_current.setText(hashMap.get("present").toString() + "명 신청 가능");
+        tv_limit.setText("총 " + hashMap.get("limitation").toString() + "명 | " + hashMap.get("present").toString() + "명 신청 가능");
 
         // 상세 설명 셋팅
         TextView tv_description = (TextView) findViewById(R.id.detail_description);
@@ -114,6 +111,9 @@ public class Details extends AppCompatActivity {
     public void showMap(View view)
     {
         Intent intent = new Intent(this,Maps.class);
+        // 위치 정보 추가
+        //intent.putExtra("latitude",위도값);
+        //intent.putExtra("longitude",경도값)
         startActivity(intent);
     }
 //
@@ -152,24 +152,35 @@ public class Details extends AppCompatActivity {
 //        startActivity(chooserIntent);
 //    }
 
-    public ArrayList<HashMap<String, Object>> selectList() {
+    // DB 탐색 기능. parameter = 찾을 int형 post_number
+    public ArrayList<HashMap<String, Object>> selectList(int target_PostNumber) {
+        System.out.println("★target_PostNumber = " + target_PostNumber);
         HashMap<String, Object> map;
         ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
         String[] column = {"owner_id", "post_name", "img_path", "period", "place", "limitation", "present", "description", "post_number"};
         Cursor cursor = null;
+
         try {
             cursor = mDB.query("post_table", column, null, null, null, null, null);
-            System.out.println("★cursor getCount = " + cursor.getCount());
-            System.out.println("★position 1 = " + cursor.getPosition());
+            System.out.println("★cursor.getCount() = " + cursor.getCount());
+            System.out.println("★initial cursor location = " + cursor.getPosition());
             cursor.moveToFirst();
-            System.out.println("★position 2 = " + cursor.getPosition());
+            System.out.println("★first cursor location = " + cursor.getPosition());
+
+            // 삭제 할지 좀 더 디버깅 해보기. 못 찾으면 마지막 항목 나오는 버그 있음.
+            while((!(cursor.getString(8).equals(String.valueOf(target_PostNumber)))) && !(cursor.isLast())) // 일치하는 post_number 를 탐색. 커서가 끝에 도달하면 그만.
+            {
+                cursor.moveToNext(); // 끝에서 한번 더 가게되면 에러날수도. 에러 처리 바로 위에 임시로 넣음.
+                System.out.println("★moving cursor = " + cursor.getPosition());
+            }
+
 //            while (cursor.moveToNext())
             {
-                System.out.println("★position 3 = " + cursor.getPosition());
+                System.out.println("★after moving cursor location = " + cursor.getPosition());
                 map = new HashMap<String, Object>();
                 System.out.println("★created HashMap");
 
-                // 모든 column의 정보(column name, value)를 map에 저장. 쉽게 말해 tuple 통째로 저장.
+                // 모든 column의 정보(column's name & value)를 map에 저장. 쉽게 말해 tuple 통째로 저장.
                 for(int index = 0 ; index < column.length; index++)
                 {
                     map.put(column[index],cursor.getString(index));
