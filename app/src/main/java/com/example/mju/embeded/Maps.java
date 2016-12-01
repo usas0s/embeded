@@ -1,5 +1,6 @@
 package com.example.mju.embeded;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -20,6 +21,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Maps extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private int latitude = 0; // 위도
+    private int longitude = 0; // 경도
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,11 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        Intent intent = getIntent();
+        System.out.println("latitude & longitude = " + latitude + " & " + longitude);
+        latitude = intent.getExtras().getInt("latitude");
+        longitude = intent.getExtras().getInt("longitude");
     }
 
     /**
@@ -46,7 +54,8 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
 
         // Add a marker in spot and move the camera
-        LatLng spot = new LatLng(37.398291, 126.963327);
+//        LatLng spot = new LatLng(37.398291, 126.963327);
+        LatLng spot = new LatLng(latitude, longitude);
         mMap.addMarker(new MarkerOptions().position(spot).title("스팟").snippet("spot")).showInfoWindow();
         mMap.moveCamera(CameraUpdateFactory.newLatLng(spot));
 

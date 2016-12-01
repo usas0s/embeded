@@ -77,30 +77,11 @@
             android:layout_margin="@dimen/item_margin"
             android:textColor="#58D68D"
             android:text="@string/limit"/>
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginLeft="@dimen/text_margin"-->
-                <!--android:text="총 60명 |"/>-->
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text=" 2명 신청가능"/>-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/text_margin"
-                android:id="@+id/detail_limit"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/detail_current"
-                android:text=" 2명 신청가능"/>
-        </LinearLayout>
+            android:layout_marginLeft="@dimen/text_margin"
+            android:id="@+id/detail_limit"/>
 
 
         <!--<TextView-->
