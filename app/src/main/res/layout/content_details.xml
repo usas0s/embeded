@@ -77,12 +77,23 @@
             android:layout_margin="@dimen/item_margin"
             android:textColor="#58D68D"
             android:text="@string/limit"/>
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/text_margin"
-            android:id="@+id/detail_limit"/>
-
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:id="@+id/detail_limit"/>
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:onClick="share"
+                android:src="@drawable/share"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
 
         <!--<TextView-->
             <!--android:layout_width="wrap_content"-->
