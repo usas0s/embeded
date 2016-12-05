@@ -1,6 +1,7 @@
 package com.example.mju.embeded;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
@@ -48,6 +49,8 @@ public class Main_GridviewAdapter extends BaseAdapter{
         }
         for(int i=0;i<mList.size();i++){
             items.add(new Item(""+mList.get(i).get("post_name").toString(), ""+mList.get(i).get("img_path").toString()+"0"));
+            Intent intent = new Intent(mContext,Details.class);
+            intent.putExtra("number",""+mList.get(i).get("_id").toString());
         }
     }
 
