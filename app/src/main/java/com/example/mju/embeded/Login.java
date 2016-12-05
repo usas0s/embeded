@@ -23,7 +23,7 @@ import java.util.Random;
 
 public class Login extends AppCompatActivity {
     static Context Lcontext;
-    private static final String URI = "content://com.example.mju.embeded/login_DB";
+    public static final Uri Content_URI = myContentProvider.CONTENT_URI_Login;
     private ContentResolver cr;
     private EditText editText1;
     private EditText editText2;
@@ -45,7 +45,7 @@ public class Login extends AppCompatActivity {
 
     public void memberLeave(){
         cr = getContentResolver();
-        cr.delete(Uri.parse(URI), "_id ="+current_Cursor.getInt(current_Cursor.getColumnIndex(Login_Contract.FeedEntry.COLUMN_NAME_ID)), null);
+        cr.delete(Content_URI, "_id ="+current_Cursor.getInt(current_Cursor.getColumnIndex(Login_Contract.FeedEntry.COLUMN_NAME_ID)), null);
         logout();
     }
 
@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity {
     public Cursor search(String id, String password){
         Cursor mCursor;
         cr =getContentResolver();
-        mCursor = cr.query(Uri.parse(URI), null, "owner_id =\""+id+"\"", null, null);
+        mCursor = cr.query(Content_URI, null, "owner_id =\""+id+"\"", null, null);
         if(mCursor.getCount()!=0) {
             while(mCursor.moveToNext()){
                 if(mCursor.getString(mCursor.getColumnIndex(Login_Contract.FeedEntry.COLUMN_NAME_PASS)).equals(password)){

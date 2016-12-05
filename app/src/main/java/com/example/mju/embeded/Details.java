@@ -2,21 +2,29 @@ package com.example.mju.embeded;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Details extends AppCompatActivity {
     private SQLiteDatabase mDB;
@@ -67,9 +75,9 @@ public class Details extends AppCompatActivity {
         });
 
         // DB 검색 후 결과 저장
-        list = selectList(target); // 모임 번호. 1~n
+        list = selectList(3); // 모임 번호. 1~n
         System.out.println("★ list_empty = " + list.isEmpty() + " size = " + list.size());
-        hashMap = list.get(0);
+        HashMap<String, Object> hashMap = list.get(0);
 
         // 모임명 셋팅
         setTitle(hashMap.get("post_name").toString());
