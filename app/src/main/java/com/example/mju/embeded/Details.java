@@ -68,7 +68,7 @@ public class Details extends AppCompatActivity {
         });
 
         // DB 검색 후 결과 저장
-        list = selectList(3);
+        list = selectList(3); // 모임 번호. 1~n
         System.out.println("★ list_empty = " + list.isEmpty() + " size = " + list.size());
         HashMap<String, Object> hashMap = list.get(0);
 
@@ -77,8 +77,8 @@ public class Details extends AppCompatActivity {
 
         // 썸네일 셋팅
         ImageView iv_thumbnail = (ImageView)findViewById(R.id.detail_thumbnail);
-        String path = hashMap.get("img_path").toString()+"0"; // 모임명에 숫자를 붙여 이미지 파일을 선택. 0 = 표지, 1~n = 상세 설명
-        System.out.println("★★image file name = "+path);
+        String path = hashMap.get("img_path").toString() + "0"; // 모임명에 숫자를 붙여 이미지 파일을 선택. 0 = 표지, 1~n = 상세 설명
+        System.out.println("★★image file name = " + path);
         iv_thumbnail.setImageResource(getResources().getIdentifier(path,"drawable",getPackageName()));
 
         // 개설자 ID 셋팅
@@ -112,8 +112,8 @@ public class Details extends AppCompatActivity {
     {
         Intent intent = new Intent(this,Maps.class);
         // 위치 정보 추가
-        //intent.putExtra("latitude",위도값);
-        //intent.putExtra("longitude",경도값)
+        intent.putExtra("param_latitude",37.398291f);
+        intent.putExtra("param_longitude",126.963327f);
         startActivity(intent);
     }
 //
