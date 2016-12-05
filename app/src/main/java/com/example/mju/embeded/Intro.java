@@ -19,12 +19,7 @@ public class Intro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        SoundPool sound_pool;
-        sound_pool = new SoundPool( 10, AudioManager.STREAM_MUSIC, 0 );
-        int SoundID = sound_pool.load( this, R.raw.cast01, 1 ); // R.raw.sound에서 "sound"는 사운드 파일명
-        sound_pool.play( SoundID, 1f, 1f, 0, 0, 1f );
-
-
+        new SoundEffects(this, R.raw.cast01);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
