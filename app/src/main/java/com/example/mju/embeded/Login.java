@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
@@ -26,7 +27,7 @@ public class Login extends AppCompatActivity {
     private ContentResolver cr;
     private EditText editText1;
     private EditText editText2;
-    private static boolean Login_State =false;
+    public static boolean Login_State =false;
     private String current_Account_ID;
     private String current_Account_PASS;
     private String current_Account_NAME;
@@ -117,6 +118,10 @@ public class Login extends AppCompatActivity {
             current_Account_EMAIL =
                     mCursor.getString(mCursor.getColumnIndex(Login_Contract.FeedEntry.COLUMN_NAME_EMAIL));
             current_Cursor = mCursor;
+
+
+            //TextView tv = (TextView)findViewById(R.id.nav_name);
+            //tv.setText(current_Account_NAME);
 
             Toast.makeText(this, current_Account_NAME + "님 환영합니다.", Toast.LENGTH_SHORT).show();
         }
