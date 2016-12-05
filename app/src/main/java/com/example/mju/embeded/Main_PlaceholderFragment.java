@@ -1,10 +1,12 @@
 package com.example.mju.embeded;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 /**
@@ -30,11 +32,19 @@ public class Main_PlaceholderFragment extends Fragment {
                              Bundle savedInstanceState) {
         int sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
 
-        View rootView = inflater.inflate(R.layout.main_fragment, container, false);
+        final View rootView = inflater.inflate(R.layout.main_fragment, container, false);
 
         if(sectionNumber == 1){
             GridView gridView = (GridView) rootView.findViewById(R.id.main_gridView);
             gridView.setAdapter(new Main_GridviewAdapter(getActivity().getApplicationContext()));
+
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(getActivity().getApplicationContext(),Details.class);
+                    startActivity(intent);
+                }
+            });
         }else if(sectionNumber == 2){
             GridView gridView = (GridView) rootView.findViewById(R.id.main_gridView);
             gridView.setAdapter(new Main_GridviewAdapter(getActivity().getApplicationContext()));
