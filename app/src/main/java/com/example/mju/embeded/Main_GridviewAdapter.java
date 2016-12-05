@@ -3,7 +3,6 @@ package com.example.mju.embeded;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,45 +20,33 @@ import java.util.List;
 
 public class Main_GridviewAdapter extends BaseAdapter{
     private List<Item> items = new ArrayList<Item>();
+    ArrayList<HashMap<String,String>> mList = new ArrayList<HashMap<String, String>>();
     private LayoutInflater inflater;
     private SQLiteDatabase mDB;
     Cursor mCursor;
+    private Context mContext;
 
     public Main_GridviewAdapter(Context context){
         inflater = LayoutInflater.from(context);
-        // DB 연동
-
+        mContext = context;
+        // DbHelper 등록 및 DB연동
         Post_DbHelper mDbHelper = new Post_DbHelper(context);
         mDB = mDbHelper.getWritableDatabase();
-        mDbHelper.onCreate(mDB);
 
-        mCursor = mDB.query("post_table",
-                new String[] {"post_name"}, null, null, null, null, "_id", "5");
-
-        ArrayList<HashMap<String,String>> mList = new ArrayList<HashMap<String,String>>();
-        if(mCursor != null) {
-            if (mCursor.moveToFirst()) {
-                do {
+        // 원하는 Db값 리스트에 저장
+        mCursor = mDB.query("post_table", new String[]{"_id","post_name","img_path"}, null,null,null,null,"_id","5");
+        if(mCursor != null){
+            if(mCursor.moveToFirst()){
+                do{
                     HashMap<String,String> item = new HashMap<String,String>();
-                    for (int j=0; j<mCursor.getColumnCount(); j++)
+                    for(int j=0; j<mCursor.getColumnCount(); j++){
                         item.put(mCursor.getColumnName(j), mCursor.getString(j));
+                    }
                     mList.add(item);
-                } while (mCursor.moveToNext());
+                }while(mCursor.moveToNext());
             }
         }
-        //Log.e("test"," "+mList.get(0).get("post_name"));
-        //items.add(new Item(""+mList.get(0).get("post_name").toString(), Color.RED));
-
-        items.add(new Item("Image1", Color.GREEN));
-        items.add(new Item("Image2", Color.RED));
-        items.add(new Item("Image3", Color.BLUE));
-        items.add(new Item("Image4", Color.GRAY));
-        items.add(new Item("Image5", Color.YELLOW));
-        items.add(new Item("Image6", Color.GREEN));
-        items.add(new Item("Image7", Color.RED));
-        items.add(new Item("Image8", Color.BLUE));
-        items.add(new Item("Image9", Color.GRAY));
-        items.add(new Item("Image10", Color.YELLOW));
+        items.add(new Item(""+mList.get(0).get("post_name").toString(), ""+mList.get(0).get("img_path").toString()+"0"));
 
     }
 
@@ -74,8 +61,8 @@ public class Main_GridviewAdapter extends BaseAdapter{
     }
 
     @Override
-    public long getItemId(int i) {
-        return items.get(i).colorId;
+    public long getItemId(int position) {
+        return 0;
     }
 
     @Override
@@ -85,27 +72,28 @@ public class Main_GridviewAdapter extends BaseAdapter{
             view.setTag(R.id.main_imageView, view.findViewById(R.id.main_imageView));
             view.setTag(R.id.main_textView, view.findViewById(R.id.main_textView));
         }
-
-        ImageView image = (ImageView)view.getTag(R.id.main_imageView);
-        TextView title = (TextView)view.getTag(R.id.main_textView);
-
         Item item = (Item)getItem(position);
 
-        image.setBackgroundColor(item.colorId);
-        title.setText(item.name);
+        // 대표 Image 설정
+        ImageView image = (ImageView)view.getTag(R.id.main_imageView);
+        image.setImageResource(mContext.getResources().getIdentifier(item.img_path,"drawable",mContext.getPackageName()));
+
+        // Title 설정
+        TextView title = (TextView)view.getTag(R.id.main_textView);
+        title.setText(item.title);
 
         return view;
     }
 
     private class Item
     {
-        final String name;
-        final int colorId;
+        String title;
+        String img_path;
 
-        Item(String name, int drawableId)
+        Item(String title, String image)
         {
-            this.name = name;
-            this.colorId = drawableId;
+            this.title = title;
+            this.img_path = image;
         }
     }
 }
