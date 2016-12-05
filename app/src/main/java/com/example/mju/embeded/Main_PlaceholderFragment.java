@@ -42,6 +42,7 @@ public class Main_PlaceholderFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(getActivity().getApplicationContext(),Details.class);
+                    intent.putExtra("number",position+1);
                     startActivity(intent);
                 }
             });
