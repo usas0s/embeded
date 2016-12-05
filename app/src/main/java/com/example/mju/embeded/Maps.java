@@ -21,8 +21,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Maps extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private int latitude = 0; // 위도
-    private int longitude = 0; // 경도
+    float latitude = 0; // 위도
+    float longitude = 0; // 경도
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +34,11 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
 
         Intent intent = getIntent();
+
+        latitude = intent.getExtras().getFloat("param_latitude");
+        //intent.getFloatExtra("param_latitude",latitude);
+        longitude = intent.getExtras().getFloat("param_longitude");
         System.out.println("latitude & longitude = " + latitude + " & " + longitude);
-        latitude = intent.getExtras().getInt("latitude");
-        longitude = intent.getExtras().getInt("longitude");
     }
 
     /**
@@ -78,6 +80,19 @@ public class Maps extends FragmentActivity implements OnMapReadyCallback {
 //            mapSettings.setMyLocationButtonEnabled(true);
 //            return;
 //        }
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            mMap.setMyLocationEnabled(true);
+            return;
+        }
+
 
         // zoom in properly to spot
         mMap.animateCamera(zoom);
