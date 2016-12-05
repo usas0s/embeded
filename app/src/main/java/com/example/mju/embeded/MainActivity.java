@@ -121,13 +121,12 @@ public class MainActivity extends ActionBarActivity {
                 Intent search_intent = new Intent(this, SearchResult.class);
                 startActivity(search_intent);
                 return true;
+            case R.id.action_setting:
+                Intent setting_intent = new Intent(this, Main_SettingsActivity.class);
+                startActivity(setting_intent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void onClickDetail(View view){
-        Intent detail_intent = new Intent(this,Details.class);
-        startActivity(detail_intent);
     }
 
     public void onClickLogin(View view) {
@@ -135,17 +134,9 @@ public class MainActivity extends ActionBarActivity {
         new SoundEffects(this, R.raw.water);
         startActivity(login);
     }
-    public void onClickSearch(View view) {
-        Intent search_intent = new Intent(this, SearchResult.class);
-        startActivity(search_intent);
-    }
 
     public void onClickHome(View view){
         mDrawerLayout.closeDrawers();
-    }
-    public void onClickSetting(View view){
-        //Intent home_intent = new Intent(this,MainActivity.class);
-        //startActivity(home_intent);
     }
     public void onClickClose(View view){
         mDrawerLayout.closeDrawers();

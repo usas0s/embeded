@@ -1,7 +1,6 @@
 package com.example.mju.embeded;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
@@ -35,7 +34,7 @@ public class Main_GridviewAdapter extends BaseAdapter{
         mDB = mDbHelper.getWritableDatabase();
 
         // 원하는 Db값 리스트에 저장
-        mCursor = mDB.query("post_table", new String[]{"_id","post_name","img_path"}, null,null,null,null,"_id","5");
+        mCursor = mDB.query("post_table", new String[]{"post_number","post_name","img_path"}, null,null,null,null,"_id","5");
         if(mCursor != null){
             if(mCursor.moveToFirst()){
                 do{
@@ -49,8 +48,6 @@ public class Main_GridviewAdapter extends BaseAdapter{
         }
         for(int i=0;i<mList.size();i++){
             items.add(new Item(""+mList.get(i).get("post_name").toString(), ""+mList.get(i).get("img_path").toString()+"0"));
-            Intent intent = new Intent(mContext,Details.class);
-            intent.putExtra("number",""+mList.get(i).get("_id").toString());
         }
     }
 
