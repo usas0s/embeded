@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/re_embeded.iml" filepath="$PROJECT_DIR$/re_embeded.iml" />
+      <module fileurl="file://$PROJECT_DIR$/git_embeded.iml" filepath="$PROJECT_DIR$/git_embeded.iml" />
     </modules>
   </component>
 </project>
