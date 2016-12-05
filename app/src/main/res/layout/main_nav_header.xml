@@ -9,23 +9,24 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
     android:background="?attr/colorPrimaryDark"
-    android:gravity="bottom"
-    android:theme="@style/AppTheme" >
+    android:orientation="vertical"
+    android:theme="@style/AppTheme"
+    android:weightSum="1">
 
-    <ImageView
-        android:id="@+id/main_imageView"
-        android:layout_width="50dp"
-        android:layout_height="match_parent"
-        android:onClick="onClickLogin"
-        android:src="@drawable/user_icon" />
-    <TextView
+    <LinearLayout
+        android:id="@+id/main_nav_header_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="left|center_vertical"
-        android:text="로그인 해주세요."
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:onClick="onClickLogin"/>
+        android:layout_height="@dimen/nav_header_toolbar"
+        android:background="@color/white"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.example.mju.embeded.LoginFragment"
+        android:id="@+id/fragment"
+        android:layout_weight="0.56" />
+
 
 </LinearLayout>

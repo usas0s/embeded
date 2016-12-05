@@ -153,6 +153,7 @@ public class Login_Register extends AppCompatActivity {
         Toast.makeText(this, "회원가입 완료. \n로그인창으로 돌아갑니다.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
+        finish();
     }
     public static boolean isId(String id) {
         if (id==null) return false;
