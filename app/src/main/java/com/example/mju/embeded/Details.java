@@ -1,5 +1,6 @@
 package com.example.mju.embeded;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
@@ -16,6 +17,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,7 @@ public class Details extends AppCompatActivity {
     private Post_DbHelper mDbHelper;
     //private Cursor mCursor;
     private ArrayList<HashMap<String, Object>> list;
+    private HashMap<String, Object> hashMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,9 @@ public class Details extends AppCompatActivity {
         setContentView(R.layout.activity_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Intent intent = getIntent();
+        int target = 1; // main 완료 후 이 줄 지우고 아랫줄 주석 해제
+        // target = intent.getExtras().getInt("number");
 
         // DB 연동
         mDbHelper = new Post_DbHelper(this);
@@ -68,9 +74,9 @@ public class Details extends AppCompatActivity {
         });
 
         // DB 검색 후 결과 저장
-        list = selectList(3); // 모임 번호. 1~n
+        list = selectList(target); // 모임 번호. 1~n
         System.out.println("★ list_empty = " + list.isEmpty() + " size = " + list.size());
-        HashMap<String, Object> hashMap = list.get(0);
+        hashMap = list.get(0);
 
         // 모임명 셋팅
         setTitle(hashMap.get("post_name").toString());
@@ -104,7 +110,7 @@ public class Details extends AppCompatActivity {
         // 설명 이미지 셋팅
         ImageView iv_image = (ImageView)findViewById(R.id.detail_image);
         path = hashMap.get("img_path").toString()+"1"; // 모임명에 숫자를 붙여 이미지 파일을 선택. 0 = 표지, 1~n = 상세 설명
-        System.out.println("★★detail image file name = "+path);
+        System.out.println("★★detail image file name = " + path);
         iv_image.setImageResource(getResources().getIdentifier(path,"drawable",getPackageName()));
     }
 
@@ -116,6 +122,8 @@ public class Details extends AppCompatActivity {
         intent.putExtra("param_longitude",126.963327f);
         startActivity(intent);
     }
+
+    // SNS 공유하기
 //
 //    private void sendShare() {
 //        Intent intent = new Intent(Intent.ACTION_SEND);
@@ -151,6 +159,19 @@ public class Details extends AppCompatActivity {
 //        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, shareIntentList.toArray(new Parcelable[]{}));
 //        startActivity(chooserIntent);
 //    }
+    public void share(View view)
+    {
+        String share_postname = hashMap.get("post_name").toString(); // 모임 이름
+        String share_description = hashMap.get("description").toString(); // 상세 설명
+        Context context = this;
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_SUBJECT, share_postname);
+        intent.putExtra(Intent.EXTRA_TEXT, "[" + share_postname + "] \n\n" + share_description + "\n\n같이 가지 않으실래요?"); // [모임명] 상세설명" 메시지로 보낸다.
+
+        intent.setType("text/plain");
+
+        context.startActivity(Intent.createChooser(intent, "공유하기"));
+    }
 
     // DB 탐색 기능. parameter = 찾을 int형 post_number
     public ArrayList<HashMap<String, Object>> selectList(int target_PostNumber) {
