@@ -51,8 +51,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SearchResult" />
 
+
         <provider
             android:name=".Post_ContentProvider"
+            android:authorities="com.example.mju.embeded"
+            android:enabled="true"
+            android:exported="true" />
+
+        <provider
+            android:name=".Login_ContentProvider"
             android:authorities="com.example.mju.embeded"
             android:enabled="true"
             android:exported="true" />
@@ -61,11 +68,6 @@
             android:name=".Login"
             android:label="@string/title_activity_login" />
 
-        <provider
-            android:name=".Login_ContentProvider"
-            android:authorities="com.example.mju.embeded"
-            android:enabled="true"
-            android:exported="true" />
 
         <activity
             android:name=".Login_Register"

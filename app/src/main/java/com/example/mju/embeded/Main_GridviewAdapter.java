@@ -46,8 +46,9 @@ public class Main_GridviewAdapter extends BaseAdapter{
                 }while(mCursor.moveToNext());
             }
         }
-        items.add(new Item(""+mList.get(0).get("post_name").toString(), ""+mList.get(0).get("img_path").toString()+"0"));
-
+        for(int i=0;i<mList.size();i++){
+            items.add(new Item(""+mList.get(i).get("post_name").toString(), ""+mList.get(i).get("img_path").toString()+"0"));
+        }
     }
 
     @Override
