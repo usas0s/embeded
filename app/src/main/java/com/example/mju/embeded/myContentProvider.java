@@ -13,6 +13,8 @@ import android.text.TextUtils;
 
 public class myContentProvider extends ContentProvider {
 
+    private int post_number = 1;
+
     private static final int POST = 1;
     private static final int POST_ID = 2;
     private static final int LOGIN = 3;
@@ -48,7 +50,7 @@ public class myContentProvider extends ContentProvider {
         mDB = mDBHelper.getWritableDatabase();
         mDBHelper.onCreate(mDB);
 
-        ContentValues                v = new ContentValues();
+        ContentValues v = new ContentValues();
         v.put(Login_Contract.FeedEntry.COLUMN_NAME_ID, "admin");
         v.put(Login_Contract.FeedEntry.COLUMN_NAME_PASS, "1234");
         v.put(Login_Contract.FeedEntry.COLUMN_NAME_NAME, "오지훈");
@@ -66,9 +68,9 @@ public class myContentProvider extends ContentProvider {
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 60);
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 59);
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "A-CUBE GAME JAM은 기획자, 프로그래머, 아티스트로 나누어져 각 직군들이 즉석해서 하나의 팀을 만들고 정해진 시간동안 게임을 개발해 보는 기술 시연의 장으로 색다른 아이디어를 현실화 시켜보고 싶었으나 시간과 장소에 대한 제약때문에 현실화 하지 못한 게임 개발자들이 참가하여 주어진 주제에 맞추어 게임개발을 하는 게임개발자들의 축제입니다.");
-        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 1);
+//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 1);
         System.out.println("Initial insert = 1");
-        mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, w);
+        this.insert(CONTENT_URI_Post, w);
 
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "G-NEXT GAMEJAM");
@@ -84,9 +86,9 @@ public class myContentProvider extends ContentProvider {
                 "참가시 등록한 보증금은 현장에서 환급하여 드립니다.!! \n" +
                 "\n" +
                 "G-NEXT GAMEJAM은 인디 게임 개발사들과 함께합니다.");
-        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 2);
+//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 2);
         System.out.println("Initial insert = 2");
-        mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, w);
+        this.insert(CONTENT_URI_Post, w);
 
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "대한민국 게임잼 2016");
@@ -103,9 +105,9 @@ public class myContentProvider extends ContentProvider {
                 "11/26(토) \"개발자를 위한 도트 디자인 입문 - 도트 클리커 게임 만들기\" http://onoffmix.com/event/84246\n" +
                 "12/03(토) \"슈팅 게임 제작을 통한 Unity3d의 기본기능 익히기\" http://onoffmix.com/event/84245\n" +
                 "과정에 참여할 수 있는 기회를 제공해 드립니다.\n");
-        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 3);
+//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 3);
         System.out.println("Initial insert = 3");
-        mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, w);
+        this.insert(CONTENT_URI_Post, w);
 
         return true;
     }
@@ -115,6 +117,7 @@ public class myContentProvider extends ContentProvider {
         Uri _uri = null;
         switch(uriMatcher.match(uri)) {
             case POST:
+                values.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, post_number++);
                 long _ID1 = mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, values);
                 if (_ID1 > 0) {
                     _uri = ContentUris.withAppendedId(CONTENT_URI_Post, _ID1);
