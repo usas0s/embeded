@@ -24,6 +24,9 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="title_activity_maps">Map</string>
 
+    <!--Search-->
+    <string name="title_activity_search_results">검색</string>
+
     <!-- Main -->
     <string name="action_search">Search</string>
     <string name="title_activity_settings">Settings</string>

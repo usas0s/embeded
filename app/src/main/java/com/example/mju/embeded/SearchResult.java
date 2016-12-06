@@ -73,6 +73,12 @@ public class SearchResult extends AppCompatActivity {
 
         dbSearch(searchString);
     }
+
+    public void clearList(View view) {
+        adapter.clearList();
+        adapter.notifyDataSetChanged();
+    }
+
     public void dbSearch(String s) {
         if (s.length() > 0) {
             String[] mProjection = {
@@ -83,7 +89,6 @@ public class SearchResult extends AppCompatActivity {
             };
             String mSelectionClauses = Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME + " like '%" + s + "%'";
             Cursor c = cr.query(Content_URI, mProjection , mSelectionClauses, null, null);
-            Toast.makeText(this, "Search Keyword " + s , Toast.LENGTH_LONG).show();
 
             while (c.moveToNext()) {
                 String pName = c.getString(c.getColumnIndex(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME));

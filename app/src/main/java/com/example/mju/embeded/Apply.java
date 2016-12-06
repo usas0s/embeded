@@ -36,6 +36,11 @@ public class Apply extends AppCompatActivity {
         {
             if(((CheckBox)findViewById(R.id.cb_agree)).isChecked())
             {
+                if(true) {
+                    // TODO : DB 서치를 통해 current가 limit를 넘지 않게 + 기간이 넘었을 경우 신청하지 못하게 (DB삭제로 대체 가능)
+                }
+
+                // TODO : 입력된 Data를 DB로 넣기
                 Toast.makeText(getApplicationContext(), "INSERT " + name + " / " + phone + " / " + email + " INTO DB", Toast.LENGTH_LONG).show();
             }
             else
@@ -43,5 +48,6 @@ public class Apply extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "약관에 동의해주세요.", Toast.LENGTH_SHORT).show();
             }
         }
+
     }
 }

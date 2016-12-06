@@ -52,7 +52,9 @@
             android:name=".Details"
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SearchResult" />
+        <activity
+            android:name=".SearchResult"
+            android:label="@string/title_activity_search_results" />
 
         <provider
             android:name=".myContentProvider"

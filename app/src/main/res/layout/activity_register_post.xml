@@ -28,7 +28,6 @@
                 android:gravity="center_horizontal"/>
         </LinearLayout>
 
-        // 모임명
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -50,7 +49,6 @@
                 />
         </LinearLayout>
 
-        // 모임 일시
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -72,7 +70,6 @@
                 />
         </LinearLayout>
 
-        // 모임 장소
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -93,7 +90,6 @@
                 android:inputType="text" />
         </LinearLayout>
 
-        // 상세 설명
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -114,7 +110,6 @@
                 android:inputType="text" />
         </LinearLayout>
 
-        // 제한인원
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
