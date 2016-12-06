@@ -28,7 +28,8 @@ import java.util.List;
 
 public class Details extends AppCompatActivity {
     private SQLiteDatabase mDB;
-    private Post_DbHelper mDbHelper;
+    // 1206 modified : Post_DbHelper -> myDBHelper
+    private myDBHelper mDbHelper;
     //private Cursor mCursor;
     private ArrayList<HashMap<String, Object>> list;
     private HashMap<String, Object> hashMap;
@@ -44,7 +45,7 @@ public class Details extends AppCompatActivity {
         // target = intent.getExtras().getInt("number");
 
         // DB 연동
-        mDbHelper = new Post_DbHelper(this);
+        mDbHelper = new myDBHelper(this);
         mDB = mDbHelper.getWritableDatabase();
 //        mDbHelper.onCreate(mDB);
 

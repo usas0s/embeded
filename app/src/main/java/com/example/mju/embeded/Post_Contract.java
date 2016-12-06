@@ -10,7 +10,7 @@ public class Post_Contract {
 
     public Post_Contract(){};
 
-    public static final String DATABASE_NAME = "Post_DB";
+    public static final String DATABASE_NAME = "DB";
     public static final String SQL_PRAGMA_ON = "PRAGMA foreign_keys = ON";
     public static final String SQL_PRAGMA_OFF = "PRAGMA foreign_keys = OFF";
     public static final String SQL_CREATE_TABLE =

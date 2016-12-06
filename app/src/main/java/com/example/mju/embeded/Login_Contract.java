@@ -10,7 +10,7 @@ public final class Login_Contract {
 
     public Login_Contract(){};
 
-    public static final String DATABASE_NAME = "login_DB";
+    public static final String DATABASE_NAME = "DB";
     public static final String SQL_CREATE_TABLE =
             "CREATE TABLE IF NOT EXISTS " + FeedEntry.TABLE_NAME + " ( " +
                     FeedEntry._ID + " INTEGER PRIMARY KEY," +
