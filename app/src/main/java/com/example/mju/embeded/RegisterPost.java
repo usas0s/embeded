@@ -20,7 +20,7 @@ public class RegisterPost extends AppCompatActivity {
         cr = getContentResolver();
     }
 
-    private void onRegisterPost()
+    public void onRegisterPost()
     {
         String name = ((EditText) findViewById(R.id.register_post_name)).getText().toString();
         String period = ((EditText) findViewById(R.id.register_post_period)).getText().toString();
