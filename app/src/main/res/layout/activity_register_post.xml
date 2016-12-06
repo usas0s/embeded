@@ -18,16 +18,17 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/acube0"/>
+                android:src="@drawable/in"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/title_activity_details"
+                android:text="모임 등록"
                 android:layout_marginTop="20dp"
                 android:textSize="40sp"
                 android:gravity="center_horizontal"/>
         </LinearLayout>
 
+        // 모임명
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -35,11 +36,11 @@
             <TextView
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="이름 : "
+                android:text="모임명 : "
                 android:textSize="13sp"
                 android:gravity="center_vertical|right"/>
             <EditText
-                android:id="@+id/user_name"
+                android:id="@+id/register_post_name"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:focusable="true"
@@ -49,6 +50,7 @@
                 />
         </LinearLayout>
 
+        // 모임 일시
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -56,20 +58,21 @@
             <TextView
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="핸드폰번호 : "
+                android:text="모임 일시 : "
                 android:textSize="13sp"
                 android:gravity="center_vertical|right"/>
             <EditText
-                android:id="@+id/user_phone"
+                android:id="@+id/register_post_period"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:cursorVisible="true"
-                android:inputType="phone"
+                android:inputType="text"
                 />
         </LinearLayout>
 
+        // 모임 장소
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -77,17 +80,38 @@
             <TextView
                 android:layout_width="70dp"
                 android:layout_height="50dp"
-                android:text="이메일 : "
+                android:text="모임 장소 : "
                 android:textSize="13sp"
                 android:gravity="center_vertical|right"/>
             <EditText
-                android:id="@+id/user_email"
+                android:id="@+id/register_post_place"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:cursorVisible="true"
-                android:inputType="textEmailAddress" />
+                android:inputType="text" />
+        </LinearLayout>
+
+        // 상세 설명
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp">
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:text="모임 설명 : "
+                android:textSize="13sp"
+                android:gravity="center_vertical|right"/>
+            <EditText
+                android:id="@+id/register_post_description"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:cursorVisible="true"
+                android:inputType="text" />
         </LinearLayout>
 
         <LinearLayout
@@ -112,7 +136,7 @@
                 android:textSize="15sp"
                 android:background="@color/blue"
                 android:textColor="@color/white"
-                android:onClick="onClickApply"
+                android:onClick="onRegisterPost"
                 android:layout_marginBottom="30dp"/>
         </LinearLayout>
     </LinearLayout>
