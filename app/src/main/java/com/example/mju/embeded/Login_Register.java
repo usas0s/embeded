@@ -23,7 +23,8 @@ import java.util.regex.Pattern;
 
 public class Login_Register extends AppCompatActivity {
 
-    private static final String URI = "content://com.example.mju.embeded/login_DB";
+//    private static final String URI = "content://com.example.mju.embeded/login_DB";
+    public static final Uri Content_uri = myContentProvider.CONTENT_URI_Login;
     private EditText _id;
     private EditText _pass;
     private EditText _pass2;
@@ -124,7 +125,7 @@ public class Login_Register extends AppCompatActivity {
         }
 
         //이미 존재하는 id인지 확인.
-        mCursor = cr.query(Uri.parse(URI), null, "owner_id =\""+id+"\"", null, null);
+        mCursor = cr.query(Content_uri, null, "owner_id =\""+id+"\"", null, null);
         if(mCursor.getCount()>0){
             Toast.makeText(this, "이미 존재하는 ID입니다.", Toast.LENGTH_SHORT).show();
             _id.setText(null);
@@ -148,7 +149,7 @@ public class Login_Register extends AppCompatActivity {
         v.put(Login_Contract.FeedEntry.COLUMN_NAME_DEPART, depart);
         v.put(Login_Contract.FeedEntry.COLUMN_NAME_PHONE, phone);
         v.put(Login_Contract.FeedEntry.COLUMN_NAME_EMAIL, email);
-        cr.insert(Uri.parse(URI), v);
+        cr.insert(Content_uri, v);
 
         Toast.makeText(this, "회원가입 완료. \n로그인창으로 돌아갑니다.", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, Login.class);

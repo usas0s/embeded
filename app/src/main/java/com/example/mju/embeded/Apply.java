@@ -1,5 +1,7 @@
 package com.example.mju.embeded;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,10 +14,13 @@ import org.w3c.dom.Text;
 
 public class Apply extends AppCompatActivity {
 
+    ContentResolver cr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply);
+
+        cr = getContentResolver();
     }
 
     // 모임 참가 양식 작성 완료 후 참가 신청 버튼 터치 시 실행.
@@ -41,7 +46,12 @@ public class Apply extends AppCompatActivity {
                 }
 
                 // TODO : 입력된 Data를 DB로 넣기
-                Toast.makeText(getApplicationContext(), "INSERT " + name + " / " + phone + " / " + email + " INTO DB", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "INSERT " + name + " / " + phone + " / " + email + " INTO DB", Toast.LENGTH_LONG).show();
+                ContentValues v = new ContentValues();
+                v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, name);
+                v.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, phone);
+                v.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, email);
+                cr.insert(myContentProvider.CONTENT_URI_Post, v);
             }
             else
             {
