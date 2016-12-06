@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -52,7 +53,9 @@ public class MainActivity extends ActionBarActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawerLayout);
 
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.app_name, R.string.app_name);
-        mDrawerLayout.setDrawerListener(mToggle);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.DONUT) {
+            mDrawerLayout.setDrawerListener(mToggle);
+        }
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.main_navView);
         if (navigationView != null) {
@@ -62,7 +65,9 @@ public class MainActivity extends ActionBarActivity {
         // viewpager
         mViewpagerAdapter = new Main_ViewpagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.main_viewPager);
-        mViewPager.setAdapter(mViewpagerAdapter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.DONUT) {
+            mViewPager.setAdapter(mViewpagerAdapter);
+        }
 
         // tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.main_tabs);
@@ -87,7 +92,9 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         menuItem.setChecked(true);
-                        mDrawerLayout.closeDrawers();
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.DONUT) {
+                            mDrawerLayout.closeDrawers();
+                        }
                         return true;
                     }
                 });
@@ -119,7 +126,9 @@ public class MainActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.DONUT) {
+                    mDrawerLayout.openDrawer(GravityCompat.START);
+                }
                 return true;
             case R.id.action_search:
                 Intent search_intent = new Intent(this, SearchResult.class);
@@ -160,10 +169,14 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onClickHome(View view){
-        mDrawerLayout.closeDrawers();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.DONUT) {
+            mDrawerLayout.closeDrawers();
+        }
     }
     public void onClickClose(View view){
-        mDrawerLayout.closeDrawers();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.DONUT) {
+            mDrawerLayout.closeDrawers();
+        }
     }
 
 }

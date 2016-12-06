@@ -80,11 +80,12 @@ public class Search_ListViewAdapter extends BaseAdapter {
 //
 //        listViewItemList.add(item);
 //    }
-    public void addItem(String title, String desc) {
+    public void addItem(String title, String desc, int number) {
         Search_ListViewItem item = new Search_ListViewItem();
 
         item.setTitle(title);
         item.setDesc(desc);
+        item.setPostNumber(number);
 
         listViewItemList.add(item);
     }

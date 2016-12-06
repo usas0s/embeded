@@ -159,7 +159,7 @@ public class Details extends AppCompatActivity {
         Context context = this;
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_SUBJECT, share_postname);
-        intent.putExtra(Intent.EXTRA_TEXT, "[" + share_postname + "] \n\n" + share_description + "\n\n같이 가지 않으실래요?"); // [모임명] 상세설명" 메시지로 보낸다.
+        intent.putExtra(Intent.EXTRA_TEXT, "\n\n" + share_description + "\n\n같이 가지 않으실래요?"); // [모임명] 상세설명" 메시지로 보낸다.
 
         intent.setType("text/plain");
 
