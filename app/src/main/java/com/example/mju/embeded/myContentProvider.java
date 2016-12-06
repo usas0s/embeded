@@ -109,6 +109,30 @@ public class myContentProvider extends ContentProvider {
         System.out.println("Initial insert = 3");
         this.insert(CONTENT_URI_Post, w);
 
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "시험 끝나고 영화보러 갈 사람!");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "movie");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "12월 19일 (월) 19시 00분 ~ 12월 20일 (화) 19시 00분");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "용인 롯데시네마");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 4);
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 2);
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "한학기 시험보시느라 다들 고생 많으셨죠!?\n" +
+                "영화는 보고싶은데 친구들은 다 봤고... \n" +
+                "같이 영화보러 가요~!\n");
+        this.insert(CONTENT_URI_Post, w);
+
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "오버워치 한판!?");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "game");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "12월 20일 (화) 18시 00분 ~ 12월 20일 (화) 23시 59분");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "넘버원 피시방");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 4);
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 2);
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "오버워치 한판 하러가실 분!?\n" +
+                "시즌3인데 설마... 아직도 실버에요?\n" +
+                "빨리 다이아 올리러 갑시다.\n");
+        this.insert(CONTENT_URI_Post, w);
+
         return true;
     }
 

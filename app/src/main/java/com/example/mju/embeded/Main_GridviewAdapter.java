@@ -8,6 +8,7 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,9 +53,9 @@ public class Main_GridviewAdapter extends BaseAdapter{
                 }while(mCursor.moveToNext());
             }
         }
-        //Log.d("test",mList.get(0).get("post_name").toString());
         for(int i=0;i<mList.size();i++){
             items.add(new Item(""+mList.get(i).get("post_name").toString(), ""+mList.get(i).get("img_path").toString()+"0"));
+            Log.d("test",i+"번째 img: "+mList.get(i).get("img_path").toString());
         }
     }
 

@@ -8,6 +8,7 @@
         android:id="@+id/main_imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:scaleType="centerCrop" />
 
     <TextView
@@ -16,7 +17,6 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_gravity="bottom"
-        android:textColor="@android:color/white"
-        android:background="#55000000"/>
+        android:background="#00000F"/>
 
 </LinearLayout>
