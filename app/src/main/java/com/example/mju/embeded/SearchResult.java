@@ -51,6 +51,7 @@ public class SearchResult extends AppCompatActivity {
         v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 59);
         v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "A-CUBE GAME JAM은 기획자, 프로그래머, 아티스트로 나누어져 각 직군들이 즉석해서 하나의 팀을 만들고 정해진 시간동안 게임을 개발해 보는 기술 시연의 장으로 색다른 아이디어를 현실화 시켜보고 싶었으나 시간과 장소에 대한 제약때문에 현실화 하지 못한 게임 개발자들이 참가하여 주어진 주제에 맞추어 게임개발을 하는 게임개발자들의 축제입니다.");
         v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 1);
+        System.out.println("Initial insert = 1");
         cr.insert(Content_URI, v);
 
         v.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
@@ -68,6 +69,7 @@ public class SearchResult extends AppCompatActivity {
                 "\n" +
                 "G-NEXT GAMEJAM은 인디 게임 개발사들과 함께합니다.");
         v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 2);
+        System.out.println("Initial insert = 2");
         cr.insert(Content_URI, v);
 
         v.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
@@ -86,6 +88,7 @@ public class SearchResult extends AppCompatActivity {
                 "12/03(토) \"슈팅 게임 제작을 통한 Unity3d의 기본기능 익히기\" http://onoffmix.com/event/84245\n" +
                 "과정에 참여할 수 있는 기회를 제공해 드립니다.\n");
         v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 3);
+        System.out.println("Initial insert = 3");
         cr.insert(Content_URI, v);
 
         /*

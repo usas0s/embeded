@@ -41,8 +41,7 @@ public class Details extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Intent intent = getIntent();
         int target = intent.getIntExtra("number",1);
-
-
+        System.out.println("target from intent = " + target);
 
         // DB 연동
         mDbHelper = new Post_DbHelper(this);
@@ -75,9 +74,9 @@ public class Details extends AppCompatActivity {
         });
 
         // DB 검색 후 결과 저장
-        list = selectList(3); // 모임 번호. 1~n
+        list = selectList(1); // 모임 번호. 1~n
         System.out.println("★ list_empty = " + list.isEmpty() + " size = " + list.size());
-        HashMap<String, Object> hashMap = list.get(0);
+        hashMap = list.get(target);
 
         // 모임명 셋팅
         setTitle(hashMap.get("post_name").toString());

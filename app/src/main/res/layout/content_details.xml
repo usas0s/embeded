@@ -65,6 +65,10 @@
                 android:onClick="showMap"
                 android:scaleType="fitCenter"
                 android:background="@android:color/transparent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 지도보기"/>
             <!--<ImageButton-->
                 <!--android:layout_width="30dp"-->
                 <!--android:layout_height="30dp"-->
@@ -82,7 +86,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/text_margin"
                 android:id="@+id/detail_limit"/>
@@ -93,6 +97,10 @@
                 android:src="@drawable/share"
                 android:scaleType="fitCenter"
                 android:background="@android:color/transparent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 공유하기"/>
         </LinearLayout>
 
         <!--<TextView-->
