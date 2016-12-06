@@ -54,7 +54,7 @@
                 <!--android:layout_marginLeft="@dimen/text_margin"-->
                 <!--android:text="[안양창조경제융합센터] 경기 안양시 동안구 관양동 1744 3층 에이큐브"/>-->
             <TextView
-                android:layout_width="300dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/text_margin"
                 android:id="@+id/detail_place"/>
@@ -64,7 +64,7 @@
                 android:src="@drawable/gps"
                 android:onClick="showMap"
                 android:scaleType="fitCenter"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,21 +86,25 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="300dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/text_margin"
-                android:id="@+id/detail_limit"/>
-            <ImageButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:onClick="share"
-                android:src="@drawable/share"
-                android:scaleType="fitCenter"
-                android:background="@android:color/transparent" />
-            <TextView
+                android:id="@+id/detail_limit" />
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 공유하기"/>
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:onClick="share"
+                    android:src="@drawable/share"
+                    android:scaleType="fitCenter"
+                    android:background="@android:color/transparent"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 공유하기"/>
+            </LinearLayout>
         </LinearLayout>
 
         <!--<TextView-->
