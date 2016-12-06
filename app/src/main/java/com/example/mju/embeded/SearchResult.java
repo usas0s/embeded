@@ -52,16 +52,14 @@ public class SearchResult extends AppCompatActivity {
 
                 String titleStr = item.getTitle() ;
                 String descStr = item.getDesc() ;
+                int pNumber = item.getPostNumber();
                 Drawable iconDrawable = item.getIcon() ;
 
                 String toast = Integer.toString(position) + "번 Item";
 
-                if(position == 3) {
-                    Intent intent = new Intent(SearchResult.this, Details.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(SearchResult.this, toast, Toast.LENGTH_SHORT).show();
-                }
+                Intent intent = new Intent(getApplicationContext(),Details.class);
+                intent.putExtra("number", pNumber);
+                startActivity(intent);
             }
         }) ;
     }
@@ -80,7 +78,8 @@ public class SearchResult extends AppCompatActivity {
             String[] mProjection = {
                     Post_Contract.FeedEntry._ID,
                     Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME,
-                    Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION
+                    Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION,
+                    Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER
             };
             String mSelectionClauses = Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME + " like '%" + s + "%'";
             Cursor c = cr.query(Content_URI, mProjection , mSelectionClauses, null, null);
@@ -93,7 +92,8 @@ public class SearchResult extends AppCompatActivity {
                     pDesc = pDesc.substring(0, 30);
                     pDesc += "...";
                 }
-                adapter.addItem(pName, pDesc);
+                int pNumber = c.getInt(c.getColumnIndex(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER));
+                adapter.addItem(pName, pDesc, pNumber);
             }
             adapter.notifyDataSetChanged();
         } else {
