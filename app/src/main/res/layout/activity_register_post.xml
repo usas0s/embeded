@@ -114,6 +114,27 @@
                 android:inputType="text" />
         </LinearLayout>
 
+        // 제한인원
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp">
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:text="제한 인원 : "
+                android:textSize="13sp"
+                android:gravity="center_vertical|right"/>
+            <EditText
+                android:id="@+id/register_post_limit"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:cursorVisible="true"
+                android:inputType="number" />
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

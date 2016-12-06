@@ -21,8 +21,9 @@ public class RegisterPost extends AppCompatActivity {
         String period = ((EditText) findViewById(R.id.register_post_period)).getText().toString();
         String place = ((EditText) findViewById(R.id.register_post_place)).getText().toString();
         String description = ((EditText) findViewById(R.id.register_post_description)).getText().toString();
+        String limit = ((EditText) findViewById(R.id.register_post_limit)).getText().toString();
 
-        if(name.equals("") | period.equals("") | place.equals("") | description.equals("")) // 이름 or 전화번호 or email 중 하나라도 비어있을 경우
+        if(name.equals("") | period.equals("") | place.equals("") | description.equals("") | limit.equals("")) // 이름 or 전화번호 or email 중 하나라도 비어있을 경우
         {
             Toast.makeText(getApplicationContext(), "필수 입력사항을 작성해주세요!", Toast.LENGTH_SHORT).show();
 
@@ -31,7 +32,7 @@ public class RegisterPost extends AppCompatActivity {
         {
             if(((CheckBox)findViewById(R.id.cb_agree)).isChecked())
             {
-                Toast.makeText(getApplicationContext(), "INSERT " + name + " / " + period + " / " + place + " / " + description + " INTO DB", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "INSERT " + name + " / " + period + " / " + place + " / " + description + " / " + limit + " INTO DB", Toast.LENGTH_LONG).show();
             }
             else
             {
