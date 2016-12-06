@@ -6,6 +6,7 @@ public class Search_ListViewItem {
     private Drawable iconDrawable ;
     private String titleStr ;
     private String descStr ;
+    private int postNumber;
 
     public void setIcon(Drawable icon) {
         iconDrawable = icon ;
@@ -16,6 +17,7 @@ public class Search_ListViewItem {
     public void setDesc(String desc) {
         descStr = desc ;
     }
+    public void setPostNumber(int pnum) { postNumber = pnum ; }
 
     public Drawable getIcon() {
         return this.iconDrawable ;
@@ -26,4 +28,5 @@ public class Search_ListViewItem {
     public String getDesc() {
         return this.descStr ;
     }
+    public int getPostNumber() { return this.postNumber ; }
 }
