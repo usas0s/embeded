@@ -1,7 +1,6 @@
 package com.example.mju.embeded;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -37,7 +36,5 @@ public class Main_SquareImageView extends ImageView
     @Override
     public void setOnClickListener(OnClickListener l) {
         super.setOnClickListener(l);
-        Intent detail_intent = new Intent(getContext(),Details.class);
-        getContext().startActivity(detail_intent);
     }
 }

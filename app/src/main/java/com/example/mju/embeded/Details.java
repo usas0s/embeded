@@ -67,9 +67,9 @@ public class Details extends AppCompatActivity {
         });
 
         // DB 검색 후 결과 저장
-        list = selectList(1); // 모임 번호. 1~n
+        list = selectList(target); // 모임 번호. 1~n
         System.out.println("★ list_empty = " + list.isEmpty() + " size = " + list.size());
-        hashMap = list.get(target);
+        hashMap = list.get(0);
 
         // 모임명 셋팅
         setTitle(hashMap.get("post_name").toString());

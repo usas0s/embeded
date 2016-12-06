@@ -30,7 +30,7 @@ public class Main_GridviewAdapter extends BaseAdapter{
         inflater = LayoutInflater.from(context);
         mContext = context;
         // DbHelper 등록 및 DB연동
-        Post_DbHelper mDbHelper = new Post_DbHelper(context);
+        myDBHelper mDbHelper = new myDBHelper(context);
         mDB = mDbHelper.getWritableDatabase();
 
         // 원하는 Db값 리스트에 저장
@@ -46,6 +46,7 @@ public class Main_GridviewAdapter extends BaseAdapter{
                 }while(mCursor.moveToNext());
             }
         }
+        //Log.d("test",mList.get(0).get("post_name").toString());
         for(int i=0;i<mList.size();i++){
             items.add(new Item(""+mList.get(i).get("post_name").toString(), ""+mList.get(i).get("img_path").toString()+"0"));
         }
