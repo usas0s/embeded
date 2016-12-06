@@ -41,17 +41,8 @@ public class SearchResult extends AppCompatActivity {
         // ContentResolver, DB 연동
         cr = getContentResolver();
 
-        ContentValues v = new ContentValues();
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "제2회 A-CUBE 게임잼");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "acube");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "12월 2일 (금) 19시 00분 ~ 12월 4일 (일) 16시 00분");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "[안양창조경제융합센터] 경기 안양시 동안구 관양동 1744 3층 에이큐브");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 30);
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 28);
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "A-CUBE GAME JAM은 기획자, 프로그래머, 아티스트로 나누어져 각 직군들이 즉석해서 하나의 팀을 만들고 정해진 시간동안 게임을 개발해 보는 기술 시연의 장으로 색다른 아이디어를 현실화 시켜보고 싶었으나 시간과 장소에 대한 제약때문에 현실화 하지 못한 게임 개발자들이 참가하여 주어진 주제에 맞추어 게임개발을 하는 게임개발자들의 축제입니다.");
-        v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 1);
-        cr.insert(Content_URI, v);
+        //ContentValues v = new ContentValues();
+
 
         // 위에서 생성한 listview에 클릭 이벤트 핸들러 정의.
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
