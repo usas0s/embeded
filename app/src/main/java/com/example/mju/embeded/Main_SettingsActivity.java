@@ -1,6 +1,5 @@
 package com.example.mju.embeded;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -10,6 +9,10 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
+
+/**
+ * Copyright (C) 컴퓨터공학과 60112320 김동빈
+ */
 
 public class Main_SettingsActivity extends Main_AppCompatPreferenceActivity {
 

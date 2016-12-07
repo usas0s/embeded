@@ -2,14 +2,16 @@ package com.example.mju.embeded;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 
 /**
- * Created by Bini2 on 2016-11-25.
+ * Copyright (C) 컴퓨터공학과 60112320 김동빈
  */
 
-public class Main_SquareImageView extends ImageView
-{
+public class Main_SquareImageView extends ImageView {
+    private View mMainContainer;
+    private boolean mIsDirty=false;
 
     public Main_SquareImageView(Context context)
     {
@@ -32,11 +34,4 @@ public class Main_SquareImageView extends ImageView
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         setMeasuredDimension(getMeasuredWidth(), getMeasuredWidth()); //Snap to width
     }
-
-    @Override
-    public void setOnClickListener(OnClickListener l) {
-        super.setOnClickListener(l);
-    }
-
-
 }

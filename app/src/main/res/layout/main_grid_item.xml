@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (C) 컴퓨터공학과 60112320 김동빈
+  -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical" >
 
-    <com.example.mju.embeded.Main_SquareImageView
-        android:id="@+id/main_imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:scaleType="centerCrop" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.example.mju.embeded.Main_SquareImageView
+            android:id="@+id/main_imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:padding="6dp" />
+
+        <ImageView
+            android:src="@drawable/frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/main_textView"
@@ -17,6 +33,6 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_gravity="bottom"
-        android:background="#00000F"/>
+        android:textColor="@color/dark" />
 
 </LinearLayout>
