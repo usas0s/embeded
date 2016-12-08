@@ -23,6 +23,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * Copyright (C) 컴퓨터공학과 60112320 김동빈
@@ -40,6 +43,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+
+        Intent intent = getIntent();
 
         // navigation bar
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
@@ -61,6 +66,7 @@ public class MainActivity extends ActionBarActivity {
         if (navigationView != null) {
             setupDrawerContent(navigationView);
         }
+
 
         // viewpager
         mViewpagerAdapter = new Main_ViewpagerAdapter(getSupportFragmentManager());
@@ -177,6 +183,10 @@ public class MainActivity extends ActionBarActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.DONUT) {
             mDrawerLayout.closeDrawers();
         }
+    }
+
+    public void onClickLogout(View view){
+        //TODO
     }
 
 }

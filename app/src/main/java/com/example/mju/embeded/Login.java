@@ -22,25 +22,25 @@ import java.util.Random;
 */
 
 public class Login extends AppCompatActivity {
-    static Context Lcontext;
+    public static Context Lcontext;
     public static final Uri Content_URI = myContentProvider.CONTENT_URI_Login;
     private ContentResolver cr;
     private EditText editText1;
     private EditText editText2;
     public static boolean Login_State =false;
-    private String current_Account_ID;
-    private String current_Account_PASS;
-    private String current_Account_NAME;
-    private String current_Account_DEPART;
-    private String current_Account_PHONE;
-    private String current_Account_EMAIL;
+    public static String current_Account_ID;
+    public static String current_Account_PASS;
+    public static String current_Account_NAME;
+    public static String current_Account_DEPART;
+    public static String current_Account_PHONE;
+    public static String current_Account_EMAIL;
     private Cursor current_Cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Lcontext = this.getApplicationContext();
+        Lcontext = getApplicationContext();
 }
 
     public void memberLeave(){
@@ -124,6 +124,10 @@ public class Login extends AppCompatActivity {
             //tv.setText(current_Account_NAME);
 
             Toast.makeText(this, current_Account_NAME + "님 환영합니다.", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            intent.putExtra("login", Login_State);
+            startActivity(intent);
         }
         else{
             editText1.setText(null);
