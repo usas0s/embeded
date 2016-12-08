@@ -3,6 +3,7 @@ package com.example.mju.embeded;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -60,17 +61,39 @@ public class Apply extends AppCompatActivity {
         {
             if(((CheckBox)findViewById(R.id.cb_agree)).isChecked())
             {
-                if(true) {
-                    // TODO : DB 서치를 통해 current가 limit를 넘지 않게 + 기간이 넘었을 경우 신청하지 못하게 (DB삭제로 대체 가능)
+
+                String mSelectionClauses = Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER + " like '" + number + "'";
+                String[] mProjection = new String[] {
+                        Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER,
+                        Post_Contract.FeedEntry.COLUMN_NAME_LIMIT,
+                        Post_Contract.FeedEntry.COLUMN_NAME_CURRENT
+                };
+                Cursor d = cr.query(myContentProvider.CONTENT_URI_Post, mProjection, mSelectionClauses, null, null);
+                d.moveToNext();
+                int lim = d.getInt(d.getColumnIndex(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT));
+                int cur = d.getInt(d.getColumnIndex(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT));
+                if(cur > 0) {
+                    String[] selection = {
+                            Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER
+                    };
+                    ContentValues v = new ContentValues();
+                    v.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, number);
+                    v.put(Apply_Contract.FeedEntry.COLUMN_NAME_USERNAME, name);
+                    v.put(Apply_Contract.FeedEntry.COLUMN_NAME_CALLNUMBER, phone);
+                    v.put(Apply_Contract.FeedEntry.COLUMN_NAME_EMAIL, email);
+                    cr.insert(myContentProvider.CONTENT_URI_Apply, v);
+
+                    Cursor c = cr.query(myContentProvider.CONTENT_URI_Apply, selection , mSelectionClauses, null, null);
+                    cur = lim - c.getCount();
+                    System.out.println("current = " + cur);
+                    ContentValues w = new ContentValues();
+                    w.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, cur);
+                    int m = cr.update(myContentProvider.CONTENT_URI_Post, w, mSelectionClauses, null);
+                    Toast.makeText(getApplicationContext(), "Success : " + m, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Failure", Toast.LENGTH_SHORT).show();
                 }
 
-                // TODO : 입력된 Data를 DB로 넣기
-//                Toast.makeText(getApplicationContext(), "INSERT " + name + " / " + phone + " / " + email + " INTO DB", Toast.LENGTH_LONG).show();
-                ContentValues v = new ContentValues();
-                v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, name);
-                v.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, phone);
-                v.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, email);
-                cr.insert(myContentProvider.CONTENT_URI_Post, v);
             }
             else
             {
