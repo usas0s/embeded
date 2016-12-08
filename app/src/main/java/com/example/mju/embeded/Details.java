@@ -29,6 +29,9 @@ public class Details extends AppCompatActivity {
     private String path;
     private String name;
     private int target;
+    private String Lat;
+    private String Lng;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +115,10 @@ public class Details extends AppCompatActivity {
         path = hashMap.get("img_path").toString(); // 모임명에 숫자를 붙여 이미지 파일을 선택. 0 = 표지, 1~n = 상세 설명
         System.out.println("★★detail image file name = " + path+"1");
         iv_image.setImageResource(getResources().getIdentifier(path+"1","drawable",getPackageName()));
+
+        // LatLng
+        Lat = hashMap.get("latitude").toString();
+        Lng = hashMap.get("longitude").toString();
     }
 
     public void showMap(View view)
@@ -122,13 +129,13 @@ public class Details extends AppCompatActivity {
 //        intent.putExtra("param_longitude",126.963327f);
 //        startActivity(intent);
 
-        Uri uri = Uri.parse("geo:37.398291,126.963327");
+        Uri uri = Uri.parse("geo:"+Lat+","+Lng);
         Intent it = new Intent(Intent.ACTION_VIEW,uri);
         startActivity(it);
     }
 
     // SNS 공유하기
-//
+//3
 //    private void sendShare() {
 //        Intent intent = new Intent(Intent.ACTION_SEND);
 //        intent.setType("image/*");
@@ -182,7 +189,7 @@ public class Details extends AppCompatActivity {
         System.out.println("★target_PostNumber = " + target_PostNumber);
         HashMap<String, Object> map;
         ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
-        String[] column = {"owner_id", "post_name", "img_path", "period", "place", "limitation", "present", "description", "post_number"};
+        String[] column = {"owner_id", "post_name", "img_path", "period", "place", "limitation", "present", "description", "post_number", "latitude", "longitude"};
         Cursor cursor = null;
 
         try {

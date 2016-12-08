@@ -27,7 +27,7 @@ public class Post_Contract {
                     FeedEntry.COLUMN_NAME_DESCRIPTION + " text ," +
                     FeedEntry.COLUMN_NAME_POST_NUMBER + " INTEGER UNIQUE , " +
                     FeedEntry.COLUMN_NAME_LATITUDE + " real , " +
-                    FeedEntry.COLUMN_NAME_LONGTITUDE + " real " +
+                    FeedEntry.COLUMN_NAME_LONGITUDE + " real " +
                     //                    " FOREIGN KEY(owner_id) REFERENCES User(id) "+
                     " ) ";
 
@@ -58,7 +58,7 @@ public class Post_Contract {
         // GPS
         public static final String COLUMN_NAME_LATITUDE = "latitude";
         // GPS
-        public static final String COLUMN_NAME_LONGTITUDE = "longtitude";
+        public static final String COLUMN_NAME_LONGITUDE = "longitude";
     }
 }
 

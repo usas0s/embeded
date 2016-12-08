@@ -34,7 +34,7 @@ public class RegisterPost extends AppCompatActivity {
     String lngs[];
     public static String defaultUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
     Handler handler = new Handler();
-    float Lat, Lng;
+    String Lat, Lng;
 
     private String request(String urlStr) {
         StringBuilder output = new StringBuilder();
@@ -124,12 +124,14 @@ public class RegisterPost extends AppCompatActivity {
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, name);
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, period);
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, place);
+                v.put(Post_Contract.FeedEntry.COLUMN_NAME_LATITUDE,Lat );
+                v.put(Post_Contract.FeedEntry.COLUMN_NAME_LONGITUDE,Lng );
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, description);
                 int lim = Integer.parseInt(limit);
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, lim);
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 0);
                 cr.insert(myContentProvider.CONTENT_URI_Post, v);
-                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "INSERT " + name + " / " + period + " / " + place + " / " + description + " / " + limit + " / " + Lat + " / " + Lng + " INTO DB", Toast.LENGTH_LONG).show();
             }
             else
             {
@@ -195,6 +197,9 @@ public class RegisterPost extends AppCompatActivity {
                     String lng = locObject.getString("lng");
 
                     txtMsg.setText("lat : " + lat + "\nlng : " + lng);
+                    Lat = lat;
+                    Lng = lng;
+                    System.out.println("★" + lat + " / " + lng);
                 }
 
             } else {

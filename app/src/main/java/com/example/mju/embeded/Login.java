@@ -42,7 +42,7 @@ public class Login extends AppCompatActivity {
 
     public void memberLeave(){
         //cr = getContentResolver();
-        cr.delete(Content_URI, "_id = "+current_Cursor.getInt(current_Cursor.getColumnIndex(Login_Contract.FeedEntry.COLUMN_NAME_ID)), null);
+        cr.delete(Content_URI, "_id = "+current_Cursor.getInt(current_Cursor.getColumnIndex(Login_Contract.FeedEntry._ID)), null);
     }
 
     public void logout(){
