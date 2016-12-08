@@ -38,7 +38,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +47,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main_SettingsActivity"
+            android:name=".main.Main_SettingsActivity"
             android:label="@string/action_settings" />
         <activity
             android:name=".Details"
@@ -64,10 +64,10 @@
             android:exported="true" />
 
         <activity
-            android:name=".Login"
+            android:name=".login.Login"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".Login_Register"
+            android:name=".login.Login_Register"
             android:label="회원가입" />
         android:exported="true" />
         <!--

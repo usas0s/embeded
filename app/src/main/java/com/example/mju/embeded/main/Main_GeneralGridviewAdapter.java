@@ -1,4 +1,4 @@
-package com.example.mju.embeded;
+package com.example.mju.embeded.main;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -15,6 +15,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mju.embeded.R;
+import com.example.mju.embeded.myDBHelper;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +26,7 @@ import java.util.List;
  * Copyright (C) 컴퓨터공학과 60112320 김동빈
  */
 
-public class Main_LimitGridviewAdapter extends BaseAdapter{
+public class Main_GeneralGridviewAdapter extends BaseAdapter{
     private List<Item> items = new ArrayList<Item>();
     ArrayList<HashMap<String,String>> mList = new ArrayList<HashMap<String, String>>();
     private LayoutInflater inflater;
@@ -32,9 +35,7 @@ public class Main_LimitGridviewAdapter extends BaseAdapter{
     private Context mContext;
     ImageView image;
 
-    public Main_LimitGridviewAdapter(Context context){
-        int limitation, present;
-        int gap[] ={};
+    public Main_GeneralGridviewAdapter(Context context){
         inflater = LayoutInflater.from(context);
         mContext = context;
         // DbHelper 등록 및 DB연동
@@ -42,7 +43,7 @@ public class Main_LimitGridviewAdapter extends BaseAdapter{
         mDB = mDbHelper.getWritableDatabase();
 
         // 원하는 Db값 리스트에 저장
-        mCursor = mDB.query("post_table", new String[]{"limitation","present","post_name","img_path"}, null,null,null,null,"_id","7");
+        mCursor = mDB.query("post_table", new String[]{"post_number","post_name","img_path"}, null,null,null,null,"_id","7");
         if(mCursor != null){
             if(mCursor.moveToFirst()){
                 do{
@@ -54,16 +55,9 @@ public class Main_LimitGridviewAdapter extends BaseAdapter{
                 }while(mCursor.moveToNext());
             }
         }
-
-        for(int i=0;i<mList.size();i++){
-            limitation = Integer.parseInt(mList.get(i).get("limitation").toString());
-            present = Integer.parseInt(mList.get(i).get("present").toString());
-            gap[i] = limitation - present;
-        }
         for(int i=0;i<mList.size();i++){
             items.add(new Item(""+mList.get(i).get("post_name").toString(), ""+mList.get(i).get("img_path").toString()+"0"));
         }
-
     }
 
     @Override
@@ -93,7 +87,6 @@ public class Main_LimitGridviewAdapter extends BaseAdapter{
         // 대표 Image 설정
         image = (ImageView)view.getTag(R.id.main_imageView);
         image.setImageResource(mContext.getResources().getIdentifier(item.img_path,"drawable",mContext.getPackageName()));
-
 
         // Title 설정
         TextView title = (TextView)view.getTag(R.id.main_textView);

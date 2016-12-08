@@ -1,4 +1,4 @@
-package com.example.mju.embeded;
+package com.example.mju.embeded.main;
 
 import android.content.Context;
 import android.util.AttributeSet;

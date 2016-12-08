@@ -1,4 +1,4 @@
-package com.example.mju.embeded;
+package com.example.mju.embeded.main;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -23,9 +23,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.mju.embeded.R;
+import com.example.mju.embeded.RegisterPost;
+import com.example.mju.embeded.SearchResult;
+import com.example.mju.embeded.SoundEffects;
+import com.example.mju.embeded.login.Login;
 
 /**
  * Copyright (C) 컴퓨터공학과 60112320 김동빈
