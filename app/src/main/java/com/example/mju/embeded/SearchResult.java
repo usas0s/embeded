@@ -80,6 +80,8 @@ public class SearchResult extends AppCompatActivity {
     }
 
     public void dbSearch(String s) {
+        adapter.clearList();
+        adapter.notifyDataSetChanged();
         if (s.length() > 0) {
             String[] mProjection = {
                     Post_Contract.FeedEntry._ID,

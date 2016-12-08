@@ -79,6 +79,18 @@ public class myContentProvider extends ContentProvider {
 //            System.out.println("Initial insert = 1");
         this.insert(CONTENT_URI_Post, w);
 
+        int i = 1;
+        int j = 1;
+        while(i-- > 0) {
+            ContentValues u = new ContentValues();
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, j);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_USERNAME, "test");
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, i);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_EMAIL, "test@test.t");
+            this.insert(CONTENT_URI_Apply, u);
+        }
+        j++;
+
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "G-NEXT GAMEJAM");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "gnext");
@@ -96,6 +108,17 @@ public class myContentProvider extends ContentProvider {
 //        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 2);
 //            System.out.println("Initial insert = 2");
         this.insert(CONTENT_URI_Post, w);
+
+        i = 35;
+        while(i-- > 0) {
+            ContentValues u = new ContentValues();
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, j);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_USERNAME, "test");
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, i);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_EMAIL, "test@test.t");
+            this.insert(CONTENT_URI_Apply, u);
+        }
+        j++;
 
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "대한민국 게임잼 2016");
@@ -116,6 +139,16 @@ public class myContentProvider extends ContentProvider {
 //            System.out.println("Initial insert = 3");
         this.insert(CONTENT_URI_Post, w);
 
+        i = 8;
+        while(i-- > 0) {
+            ContentValues u = new ContentValues();
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, j);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_USERNAME, "test");
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, i);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_EMAIL, "test@test.t");
+            this.insert(CONTENT_URI_Apply, u);
+        }
+        j++;
 
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "시험 끝나고 영화보러 갈");
@@ -129,6 +162,17 @@ public class myContentProvider extends ContentProvider {
                 "같이 영화보러 가요~!\n");
         this.insert(CONTENT_URI_Post, w);
 
+        i = 2;
+        while(i-- > 0) {
+            ContentValues u = new ContentValues();
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, j);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_USERNAME, "test");
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, i);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_EMAIL, "test@test.t");
+            this.insert(CONTENT_URI_Apply, u);
+        }
+        j++;
+
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "오버워치 한판!?");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "game");
@@ -141,6 +185,17 @@ public class myContentProvider extends ContentProvider {
                 "빨리 다이아 올리러 갑시다.\n");
         this.insert(CONTENT_URI_Post, w);
 
+        i = 2;
+        while(i-- > 0) {
+            ContentValues u = new ContentValues();
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, j);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_USERNAME, "test");
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, i);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_EMAIL, "test@test.t");
+            this.insert(CONTENT_URI_Apply, u);
+        }
+        j++;
+
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "맛집탐방하러 가실분!");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "food");
@@ -152,6 +207,17 @@ public class myContentProvider extends ContentProvider {
                 "효자동 초밥집으로 GO GO\n");
         this.insert(CONTENT_URI_Post, w);
 
+        i = 2;
+        while(i-- > 0) {
+            ContentValues u = new ContentValues();
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, j);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_USERNAME, "test");
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, i);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_EMAIL, "test@test.t");
+            this.insert(CONTENT_URI_Apply, u);
+        }
+        j++;
+
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "몸보신하러 가실분");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "solo");
@@ -162,6 +228,17 @@ public class myContentProvider extends ContentProvider {
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "시험도 끝났는데.. 몸보신하러 갑시다\n" +
                 "보양식은 삼계탕으로!\n");
         this.insert(CONTENT_URI_Post, w);
+
+        i = j;
+        while(i-- > 0) {
+            ContentValues u = new ContentValues();
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, j);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_USERNAME, "test");
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, i);
+            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_EMAIL, "test@test.t");
+            this.insert(CONTENT_URI_Apply, u);
+        }
+        j++;
 
         return true;
     }
