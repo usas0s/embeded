@@ -46,6 +46,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/nav_member_leave"
             android:layout_weight="1"
-            android:onClick="onClickLogin"/>
+            android:onClick="onClickLeave"/>
     </LinearLayout>
 </LinearLayout>
