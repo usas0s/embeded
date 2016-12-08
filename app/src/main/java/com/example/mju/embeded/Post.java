@@ -18,8 +18,6 @@ public class Post extends AppCompatActivity {
     // 모임 참가 양식 작성 완료 후 참가 신청 버튼 터치 시 실행.
     protected void onClickApply(View view)
     {
-//        EditText tv_name = (EditText) findViewById(R.id.user_name);
-//        String name = tv_name.getText().toString();
         String name = ((EditText) findViewById(R.id.user_name)).getText().toString();
         String phone = ((EditText) findViewById(R.id.user_phone)).getText().toString();
         String email = ((EditText) findViewById(R.id.user_email)).getText().toString();

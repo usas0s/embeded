@@ -121,55 +121,15 @@ public class Details extends AppCompatActivity {
         Lng = hashMap.get("longitude").toString();
     }
 
+    // 지도 호출
     public void showMap(View view)
     {
-//        Intent intent = new Intent(this,Maps.class);
-//        // 위치 정보 추가
-//        intent.putExtra("param_latitude",37.398291f);
-//        intent.putExtra("param_longitude",126.963327f);
-//        startActivity(intent);
-
         Uri uri = Uri.parse("geo:"+Lat+","+Lng);
         Intent it = new Intent(Intent.ACTION_VIEW,uri);
         startActivity(it);
     }
 
     // SNS 공유하기
-//3
-//    private void sendShare() {
-//        Intent intent = new Intent(Intent.ACTION_SEND);
-//        intent.setType("image/*");
-//
-//        List<ResolveInfo> resInfo = getPackageManager().queryIntentActivities(intent, 0);
-//        if (resInfo.isEmpty()) {
-//            return;
-//        }
-//
-//        List<Intent> shareIntentList = new ArrayList<Intent>();
-//
-//        for (ResolveInfo info : resInfo) {
-//            Intent shareIntent = (Intent) intent.clone();
-//
-//            if (info.activityInfo.packageName.toLowerCase().equals("com.facebook.katana")) {
-//                //facebook
-//                shareIntent.setType("text/plain");
-//                shareIntent.putExtra(Intent.EXTRA_TEXT, "http://www.google.com");
-////                shareIntent.setType("image/jpg");
-////                shareIntent.putExtra(Intent.EXTRA_STREAM,  Uri.parse("file:///"+mImagePath));
-//            } else {
-//                shareIntent.setType("image/*");
-//                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "제목");
-//                shareIntent.putExtra(Intent.EXTRA_TEXT, "구글 http://www.google.com #");
-//                shareIntent.putExtra(Intent.EXTRA_STREAM,  Uri.parse("file:///"));
-//            }
-//            shareIntent.setPackage(info.activityInfo.packageName);
-//            shareIntentList.add(shareIntent);
-//        }
-//
-//        Intent chooserIntent = Intent.createChooser(shareIntentList.remove(0), "select");
-//        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, shareIntentList.toArray(new Parcelable[]{}));
-//        startActivity(chooserIntent);
-//    }
     public void share(View view)
     {
         String share_postname = hashMap.get("post_name").toString(); // 모임 이름
@@ -206,7 +166,6 @@ public class Details extends AppCompatActivity {
                 System.out.println("★moving cursor = " + cursor.getPosition());
             }
 
-//            while (cursor.moveToNext())
             {
                 System.out.println("★after moving cursor location = " + cursor.getPosition());
                 map = new HashMap<String, Object>();

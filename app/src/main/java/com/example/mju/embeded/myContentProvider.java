@@ -56,7 +56,7 @@ public class myContentProvider extends ContentProvider {
         mDB = mDBHelper.getWritableDatabase();
         mDBHelper.onCreate(mDB);
 
-        // test data
+        // 이하 초기 데이터 더미
         ContentValues v = new ContentValues();
         v.put(Login_Contract.FeedEntry.COLUMN_NAME_ID, "admin");
         v.put(Login_Contract.FeedEntry.COLUMN_NAME_PASS, "1234");
@@ -107,8 +107,6 @@ public class myContentProvider extends ContentProvider {
                 "참가시 등록한 보증금은 현장에서 환급하여 드립니다.!! \n" +
                 "\n" +
                 "G-NEXT GAMEJAM은 인디 게임 개발사들과 함께합니다.");
-//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 2);
-//            System.out.println("Initial insert = 2");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_LATITUDE, "37.400100");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_LONGITUDE, "127.104945");
         this.insert(CONTENT_URI_Post, w);
@@ -139,8 +137,6 @@ public class myContentProvider extends ContentProvider {
                 "11/26(토) \"개발자를 위한 도트 디자인 입문 - 도트 클리커 게임 만들기\" http://onoffmix.com/event/84246\n" +
                 "12/03(토) \"슈팅 게임 제작을 통한 Unity3d의 기본기능 익히기\" http://onoffmix.com/event/84245\n" +
                 "과정에 참여할 수 있는 기회를 제공해 드립니다.\n");
-//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 3);
-//            System.out.println("Initial insert = 3");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_LATITUDE, "37.468371");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_LONGITUDE, "127.039022");
         this.insert(CONTENT_URI_Post, w);
@@ -257,6 +253,7 @@ public class myContentProvider extends ContentProvider {
         return true;
     }
 
+    // db에 post 삽입
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         Uri _uri = null;
@@ -294,6 +291,7 @@ public class myContentProvider extends ContentProvider {
         return _uri;
     }
 
+    // db에서 post 제거
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         int n;

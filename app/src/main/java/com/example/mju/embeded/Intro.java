@@ -9,6 +9,7 @@ import android.os.Bundle;
         ~ Copyright (C) 컴퓨터공학과 60132291 오지훈
 */
 
+// 앱 시작 시 호출되는 인트로
 public class Intro extends AppCompatActivity {
     private double rand;
 

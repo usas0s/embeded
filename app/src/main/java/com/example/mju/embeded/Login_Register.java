@@ -22,7 +22,6 @@ import java.util.regex.Pattern;
 
 public class Login_Register extends AppCompatActivity {
 
-//    private static final String URI = "content://com.example.mju.embeded/login_DB";
     public static final Uri Content_uri = myContentProvider.CONTENT_URI_Login;
     private EditText _id;
     private EditText _pass;
@@ -38,8 +37,6 @@ public class Login_Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_register);
-
-        //Intent intent = getIntent();
     }
 
     public void onCilckRegister(View view) {

@@ -17,6 +17,7 @@ import android.widget.Toast;
         ~ Copyright (C) 컴퓨터공학과 60132291 오지훈
 */
 
+// 로그인 처리
 public class Login extends AppCompatActivity {
     public static Context Lcontext;
     public static final Uri Content_URI = myContentProvider.CONTENT_URI_Login;
@@ -38,13 +39,15 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Lcontext = this;
         cr =getContentResolver();
-}
+    }
 
+    // 멤버 탈퇴 처리
     public void memberLeave(){
         //cr = getContentResolver();
         cr.delete(Content_URI, "_id = "+current_Cursor.getInt(current_Cursor.getColumnIndex(Login_Contract.FeedEntry._ID)), null);
     }
 
+    // 모두 null로 채워 로그아웃 처리
     public void logout(){
         current_Account_ID = null;
         current_Account_PASS = null;
@@ -114,10 +117,6 @@ public class Login extends AppCompatActivity {
             current_Account_EMAIL =
                     mCursor.getString(mCursor.getColumnIndex(Login_Contract.FeedEntry.COLUMN_NAME_EMAIL));
             current_Cursor = mCursor;
-
-
-            //TextView tv = (TextView)findViewById(R.id.nav_name);
-            //tv.setText(current_Account_NAME);
 
             Toast.makeText(this, current_Account_NAME + "님 환영합니다.", Toast.LENGTH_SHORT).show();
 

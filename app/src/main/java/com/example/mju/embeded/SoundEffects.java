@@ -15,7 +15,6 @@ public class SoundEffects {
         SoundPool sound_pool = new SoundPool( 10, AudioManager.STREAM_MUSIC, 0 );
         SoundID = sound_pool.load( context, resid, 1 ); // R.raw.sound에서 "sound"는 사운드 파일명
 
-
         sound_pool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener(){
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId,int status) {

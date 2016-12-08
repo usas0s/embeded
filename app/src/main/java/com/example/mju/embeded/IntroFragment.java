@@ -12,7 +12,7 @@ import java.util.Random;
          ~ Copyright (C) 컴퓨터공학과 60132291 오지훈
 */
 
-
+// 인트로의 fragment
 public class IntroFragment extends Fragment {
     private View v;
 

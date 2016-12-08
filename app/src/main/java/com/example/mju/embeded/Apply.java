@@ -20,7 +20,7 @@ public class Apply extends AppCompatActivity {
     String img; // 좌상단 이미지
     String name; // 우상단 이미지
     int number; // 글 번호
-    ContentResolver cr;
+    ContentResolver cr; // cr
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +59,8 @@ public class Apply extends AppCompatActivity {
         }
         else // 모두 입력되어 있을 경우
         {
-            if(((CheckBox)findViewById(R.id.cb_agree)).isChecked())
+            if(((CheckBox)findViewById(R.id.cb_agree)).isChecked()) // 약관에 동의했으면 신청 완료
             {
-
                 String mSelectionClauses = Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER + " like '" + number + "'";
                 String[] mProjection = new String[] {
                         Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER,
@@ -95,7 +94,7 @@ public class Apply extends AppCompatActivity {
                 }
 
             }
-            else
+            else // 약관 미동의
             {
                 Toast.makeText(getApplicationContext(), "약관에 동의해주세요.", Toast.LENGTH_SHORT).show();
             }
