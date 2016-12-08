@@ -5,5 +5,5 @@
     android:layout_height="match_parent"
     android:isScrollContainer="false"
     android:numColumns="2"
-    tools:context="com.example.mju.embeded.main.Main_PlaceholderFragment">
+    tools:context="com.example.mju.embeded.Main_PlaceholderFragment">
 </GridView>

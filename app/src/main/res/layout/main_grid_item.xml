@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <com.example.mju.embeded.main.Main_SquareImageView
+        <com.example.mju.embeded.Main_SquareImageView
             android:id="@+id/main_imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

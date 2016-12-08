@@ -1,4 +1,4 @@
-package com.example.mju.embeded.main;
+package com.example.mju.embeded;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

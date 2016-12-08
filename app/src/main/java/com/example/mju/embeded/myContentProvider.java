@@ -11,8 +11,6 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.example.mju.embeded.login.Login_Contract;
-
 public class myContentProvider extends ContentProvider {
 
     private int post_number = 1;

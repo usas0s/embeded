@@ -1,4 +1,4 @@
-package com.example.mju.embeded.login;
+package com.example.mju.embeded;
 
 import android.provider.BaseColumns;
 

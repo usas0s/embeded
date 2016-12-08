@@ -5,8 +5,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.mju.embeded.main.MainActivity;
-
 /*
         ~ Copyright (C) 컴퓨터공학과 60132291 오지훈
 */
