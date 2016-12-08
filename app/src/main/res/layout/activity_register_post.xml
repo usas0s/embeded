@@ -90,6 +90,26 @@
                 android:focusableInTouchMode="true"
                 android:cursorVisible="true"
                 android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/requestBtn"
+                android:text="좌표로 변환 = "
+                android:gravity="center_vertical|right"
+                android:layout_marginLeft="30dp"/>
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtMsg"
+                android:hint="lat, lng"
+                android:layout_marginLeft="30dp"/>
         </LinearLayout>
 
         <LinearLayout
