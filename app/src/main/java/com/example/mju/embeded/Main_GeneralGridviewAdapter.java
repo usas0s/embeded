@@ -3,11 +3,6 @@ package com.example.mju.embeded;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.LinearGradient;
-import android.graphics.RectF;
-import android.graphics.Shader;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +22,7 @@ import java.util.List;
  */
 
 public class Main_GeneralGridviewAdapter extends BaseAdapter{
-    private List<Item> items = new ArrayList<Item>();
+    private List<Main_GridviewItem> items = new ArrayList<Main_GridviewItem>();
     ArrayList<HashMap<String,String>> mList = new ArrayList<HashMap<String, String>>();
     private LayoutInflater inflater;
     private SQLiteDatabase mDB;
@@ -38,12 +33,13 @@ public class Main_GeneralGridviewAdapter extends BaseAdapter{
     public Main_GeneralGridviewAdapter(Context context){
         inflater = LayoutInflater.from(context);
         mContext = context;
+
         // DbHelper 등록 및 DB연동
         myDBHelper mDbHelper = new myDBHelper(context);
         mDB = mDbHelper.getWritableDatabase();
 
         // 원하는 Db값 리스트에 저장
-        mCursor = mDB.query("post_table", new String[]{"post_number","post_name","img_path"}, null,null,null,null,"_id","7");
+        mCursor = mDB.query("post_table", new String[]{"post_number","post_name","img_path","limitation","present"}, null,null,null,null,"_id");
         if(mCursor != null){
             if(mCursor.moveToFirst()){
                 do{
@@ -56,7 +52,12 @@ public class Main_GeneralGridviewAdapter extends BaseAdapter{
             }
         }
         for(int i=0;i<mList.size();i++){
-            items.add(new Item(""+mList.get(i).get("post_name").toString(), ""+mList.get(i).get("img_path").toString()+"0"));
+            items.add(new Main_GridviewItem(
+                    Integer.parseInt(mList.get(i).get("post_number")),
+                    ""+mList.get(i).get("post_name").toString(),
+                    ""+mList.get(i).get("img_path").toString()+"0",
+                    Integer.parseInt(mList.get(i).get("limitation")),
+                    Integer.parseInt(mList.get(i).get("present"))));
         }
     }
 
@@ -82,38 +83,16 @@ public class Main_GeneralGridviewAdapter extends BaseAdapter{
             view.setTag(R.id.main_imageView, view.findViewById(R.id.main_imageView));
             view.setTag(R.id.main_textView, view.findViewById(R.id.main_textView));
         }
-        Item item = (Item)getItem(position);
+        Main_GridviewItem item = (Main_GridviewItem)getItem(position);
 
         // 대표 Image 설정
         image = (ImageView)view.getTag(R.id.main_imageView);
-        image.setImageResource(mContext.getResources().getIdentifier(item.img_path,"drawable",mContext.getPackageName()));
+        image.setImageResource(mContext.getResources().getIdentifier(item.getImgPath(),"drawable",mContext.getPackageName()));
 
         // Title 설정
         TextView title = (TextView)view.getTag(R.id.main_textView);
-        title.setText(item.title);
+        title.setText(item.getPostName());
 
         return view;
-    }
-
-    private void roundRectShape() {
-        float[] outerR = new float[] { 12, 12, 12, 12, 0, 0, 0, 0 };
-        RectF inset = new RectF(6, 6, 6, 6);
-        float[] innerR = new float[] { 12, 12, 0, 0, 12, 12, 0, 0 };
-        ShapeDrawable drawable = new ShapeDrawable(new RoundRectShape(outerR,inset, innerR));
-        drawable.setIntrinsicWidth(200);
-        drawable.setIntrinsicHeight(100);
-        drawable.getPaint().setShader(new LinearGradient(0, 0, 50, 50, new int[] {0xFFFF0000, 0XFF00FF00, 0XFF0000FF }, null, Shader.TileMode.REPEAT));
-        image.setImageDrawable(drawable);
-    }
-
-    private class Item {
-        String title;
-        String img_path;
-
-        Item(String title, String image)
-        {
-            this.title = title;
-            this.img_path = image;
-        }
     }
 }

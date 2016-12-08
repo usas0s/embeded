@@ -18,7 +18,7 @@ import java.util.List;
  * Copyright (C) 컴퓨터공학과 60112320 김동빈
  */
 
-public class Main_LimitGridviewAdapter extends BaseAdapter{
+public class Main_NameGridviewAdapter extends BaseAdapter{
     private List<Main_GridviewItem> items = new ArrayList<Main_GridviewItem>();
     ArrayList<HashMap<String,String>> mList = new ArrayList<HashMap<String, String>>();
     private LayoutInflater inflater;
@@ -27,7 +27,7 @@ public class Main_LimitGridviewAdapter extends BaseAdapter{
     private Context mContext;
     ImageView image;
 
-    public Main_LimitGridviewAdapter(Context context){
+    public Main_NameGridviewAdapter(Context context){
         inflater = LayoutInflater.from(context);
         mContext = context;
 
@@ -36,7 +36,7 @@ public class Main_LimitGridviewAdapter extends BaseAdapter{
         mDB = mDbHelper.getWritableDatabase();
 
         // 원하는 Db값 리스트에 저장
-        mCursor = mDB.query("post_table", new String[]{"post_number","post_name","img_path","limitation","present"}, null,null,null,null,"limitation desc");
+        mCursor = mDB.query("post_table", new String[]{"post_number","post_name","img_path","limitation","present"}, null,null,null,null,"post_name asc");
         if(mCursor != null){
             if(mCursor.moveToFirst()){
                 do{

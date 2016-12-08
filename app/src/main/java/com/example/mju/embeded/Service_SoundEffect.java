@@ -13,9 +13,12 @@ public class Service_SoundEffect extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
+
+
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
+
 }
