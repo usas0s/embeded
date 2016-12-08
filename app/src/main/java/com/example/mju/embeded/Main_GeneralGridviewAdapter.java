@@ -15,6 +15,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mju.embeded.R;
+import com.example.mju.embeded.myDBHelper;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

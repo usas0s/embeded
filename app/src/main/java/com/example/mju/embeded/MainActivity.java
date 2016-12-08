@@ -1,7 +1,5 @@
 package com.example.mju.embeded;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -26,7 +24,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -41,8 +38,6 @@ public class MainActivity extends ActionBarActivity {
     private Main_ViewpagerAdapter mViewpagerAdapter;
     private ViewPager mViewPager;
     private GridView mGridView;
-    private FragmentManager fragmentManager;
-    private Fragment frg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +152,6 @@ public class MainActivity extends ActionBarActivity {
         Intent login = new Intent(this, Login.class);
         new SoundEffects(this, R.raw.water);
         startActivity(login);
-        finish();
     }
     public void onClickPush(View view){
         Intent intent = new Intent(this, MainActivity.class);
@@ -192,21 +186,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onClickLogout(View view){
-        ((Login)Login.Lcontext).logout();
-        //TODO 부하가 심한 방법 나중에 수정요함
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        Toast.makeText(this, "정상적으로 로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
-        finish();
-    }
-
-    public void onClickLeave(View view){
-        ((Login)Login.Lcontext).memberLeave();
-        ((Login)Login.Lcontext).logout();
-        Intent intent = new Intent(this, Login.class);
-        Toast.makeText(this, "회원 탈퇴 되었습니다.", Toast.LENGTH_SHORT).show();
-        startActivity(intent);
-        //finish();
+        //TODO
     }
 
 }
