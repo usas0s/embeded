@@ -75,6 +75,8 @@ public class myContentProvider extends ContentProvider {
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 60);
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 59);
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "A-CUBE GAME JAM은 기획자, 프로그래머, 아티스트로 나누어져 각 직군들이 즉석해서 하나의 팀을 만들고 정해진 시간동안 게임을 개발해 보는 기술 시연의 장으로 색다른 아이디어를 현실화 시켜보고 싶었으나 시간과 장소에 대한 제약때문에 현실화 하지 못한 게임 개발자들이 참가하여 주어진 주제에 맞추어 게임개발을 하는 게임개발자들의 축제입니다.");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LATITUDE, "37.398257");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LONGITUDE, "126.963172");
 //        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 1);
 //            System.out.println("Initial insert = 1");
         this.insert(CONTENT_URI_Post, w);
@@ -95,6 +97,8 @@ public class myContentProvider extends ContentProvider {
                 "G-NEXT GAMEJAM은 인디 게임 개발사들과 함께합니다.");
 //        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 2);
 //            System.out.println("Initial insert = 2");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LATITUDE, "37.400100");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LONGITUDE, "127.104945");
         this.insert(CONTENT_URI_Post, w);
 
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
@@ -114,6 +118,8 @@ public class myContentProvider extends ContentProvider {
                 "과정에 참여할 수 있는 기회를 제공해 드립니다.\n");
 //        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, 3);
 //            System.out.println("Initial insert = 3");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LATITUDE, "37.468371");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LONGITUDE, "127.039022");
         this.insert(CONTENT_URI_Post, w);
 
 
@@ -127,6 +133,8 @@ public class myContentProvider extends ContentProvider {
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "한학기 시험보시느라 다들 고생 많으셨죠!?\n" +
                 "영화는 보고싶은데 친구들은 다 봤고... \n" +
                 "같이 영화보러 가요~!\n");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LATITUDE, "37.235077");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LONGITUDE, "127.205790");
         this.insert(CONTENT_URI_Post, w);
 
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
@@ -139,6 +147,8 @@ public class myContentProvider extends ContentProvider {
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "오버워치 한판 하러가실 분!?\n" +
                 "시즌3인데 설마... 아직도 실버에요?\n" +
                 "빨리 다이아 올리러 갑시다.\n");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LATITUDE, "37.226904");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LONGITUDE, "127.187356");
         this.insert(CONTENT_URI_Post, w);
 
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
@@ -150,6 +160,8 @@ public class myContentProvider extends ContentProvider {
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 2);
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "목표는 하나!\n" +
                 "효자동 초밥집으로 GO GO\n");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LATITUDE, "37.578740");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LONGITUDE, "126.970928");
         this.insert(CONTENT_URI_Post, w);
 
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
@@ -161,6 +173,8 @@ public class myContentProvider extends ContentProvider {
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 2);
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "시험도 끝났는데.. 몸보신하러 갑시다\n" +
                 "보양식은 삼계탕으로!\n");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LATITUDE, "37.577726");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LONGITUDE, "126.971621");
         this.insert(CONTENT_URI_Post, w);
 
         return true;
