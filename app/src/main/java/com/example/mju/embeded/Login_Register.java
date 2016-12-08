@@ -1,4 +1,4 @@
-package com.example.mju.embeded.login;
+package com.example.mju.embeded;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -13,9 +13,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.example.mju.embeded.R;
-import com.example.mju.embeded.myContentProvider;
 
 import java.util.regex.Pattern;
 

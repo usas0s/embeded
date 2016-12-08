@@ -1,4 +1,4 @@
-package com.example.mju.embeded.main;
+package com.example.mju.embeded;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,10 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-
-import com.example.mju.embeded.Details;
-import com.example.mju.embeded.R;
-import com.example.mju.embeded.myDBHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;

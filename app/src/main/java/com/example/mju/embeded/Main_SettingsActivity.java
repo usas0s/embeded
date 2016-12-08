@@ -1,4 +1,4 @@
-package com.example.mju.embeded.main;
+package com.example.mju.embeded;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,6 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
-
-import com.example.mju.embeded.R;
 
 /**
  * Copyright (C) 컴퓨터공학과 60112320 김동빈

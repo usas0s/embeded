@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.mju.embeded.login.Login_Contract;
-
 /**
  * Created by Only user one on 2016-12-05.
  */

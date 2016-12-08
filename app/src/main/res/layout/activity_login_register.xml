@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.mju.embeded.login.Login_Register">
+    tools:context="com.example.mju.embeded.Login_Register">
 
     <!--
     ~ Copyright (C) 컴퓨터공학과 60132291 오지훈

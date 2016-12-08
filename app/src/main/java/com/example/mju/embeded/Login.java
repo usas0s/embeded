@@ -1,4 +1,4 @@
-package com.example.mju.embeded.login;
+package com.example.mju.embeded;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -11,10 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.example.mju.embeded.main.MainActivity;
-import com.example.mju.embeded.R;
-import com.example.mju.embeded.myContentProvider;
 
 
 /*
