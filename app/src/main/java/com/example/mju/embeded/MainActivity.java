@@ -150,8 +150,10 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onClickLogin(View view) {
+        Intent intent = new Intent(this, Service_SoundEffect.class);
+        intent.putExtra("sound", R.raw.water);
+        startService(intent);
         Intent login = new Intent(this, Login.class);
-        new SoundEffects(this, R.raw.water);
         startActivity(login);
     }
     public void onClickPush(View view){

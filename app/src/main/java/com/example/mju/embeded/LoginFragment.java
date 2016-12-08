@@ -24,10 +24,10 @@ public class LoginFragment extends Fragment {
             TextView depart = (TextView)v.findViewById(R.id.nav_depart);
             TextView phone = (TextView)v.findViewById(R.id.nav_phone);
             TextView email = (TextView)v.findViewById(R.id.nav_email);
-            name.setText(Login.current_Account_ID);
-            depart.setText(Login.current_Account_DEPART);
-            phone.setText(Login.current_Account_PHONE);
-            email.setText(Login.current_Account_EMAIL);
+            name.setText(Login.current_Account_NAME+"님 환영합니다.");
+            depart.setText("학과 : "+Login.current_Account_DEPART);
+            phone.setText("전화번호 : "+Login.current_Account_PHONE);
+            email.setText("매일주소 : "+Login.current_Account_EMAIL);
         }
         else v = inflater.inflate(R.layout.fragment_login1, container, true);
 
