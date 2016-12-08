@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -115,11 +116,15 @@ public class Details extends AppCompatActivity {
 
     public void showMap(View view)
     {
-        Intent intent = new Intent(this,Maps.class);
-        // 위치 정보 추가
-        intent.putExtra("param_latitude",37.398291f);
-        intent.putExtra("param_longitude",126.963327f);
-        startActivity(intent);
+//        Intent intent = new Intent(this,Maps.class);
+//        // 위치 정보 추가
+//        intent.putExtra("param_latitude",37.398291f);
+//        intent.putExtra("param_longitude",126.963327f);
+//        startActivity(intent);
+
+        Uri uri = Uri.parse("geo:37.398291,126.963327");
+        Intent it = new Intent(Intent.ACTION_VIEW,uri);
+        startActivity(it);
     }
 
     // SNS 공유하기
