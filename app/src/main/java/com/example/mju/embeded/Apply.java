@@ -2,32 +2,51 @@ package com.example.mju.embeded;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 public class Apply extends AppCompatActivity {
-
+    String img; // 좌상단 이미지
+    String name; // 우상단 이미지
+    int number; // 글 번호
     ContentResolver cr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply);
 
         cr = getContentResolver();
+
+        // intent 로부터 detail 의 정보를 일부 넘겨받아 설정.
+        Intent intent = getIntent();
+        img = intent.getExtras().getString("img");
+        name = intent.getExtras().getString("name");
+        number = intent.getExtras().getInt("number");
+        System.out.println("★★ img,name,number = " + img +" / " + name + " / " + number);
+
+        ImageView imageView = (ImageView)findViewById(R.id.applyIMG);
+        imageView.setImageResource(getResources().getIdentifier(img+"0","drawable",getPackageName()));
+
+        TextView textView = (TextView)findViewById(R.id.applyTitle);
+        textView.setText(name);
+
+        this.setTitle(name);
     }
 
     // 모임 참가 양식 작성 완료 후 참가 신청 버튼 터치 시 실행.
     protected void onClickApply(View view)
     {
-//        EditText tv_name = (EditText) findViewById(R.id.user_name);
-//        String name = tv_name.getText().toString();
         String name = ((EditText) findViewById(R.id.user_name)).getText().toString();
         String phone = ((EditText) findViewById(R.id.user_phone)).getText().toString();
         String email = ((EditText) findViewById(R.id.user_email)).getText().toString();
