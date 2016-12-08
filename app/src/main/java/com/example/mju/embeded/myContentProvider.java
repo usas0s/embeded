@@ -21,13 +21,17 @@ public class myContentProvider extends ContentProvider {
     private static final int POST_ID = 2;
     private static final int LOGIN = 3;
     private static final int LOGIN_ID = 4;
+    private static final int APPLY = 5;
 
     private static final String URI_Post =
             "content://com.example.mju.embeded.myContentProvider/" + Post_Contract.FeedEntry.TABLE_NAME;
     private static final String URI_Login =
             "content://com.example.mju.embeded.myContentProvider/" + Login_Contract.FeedEntry.TABLE_NAME;
+    private static final String URI_Apply =
+            "content://com.example.mju.embeded.myContentProvider/" + Apply_Contract.FeedEntry.TABLE_NAME;
     public static final Uri CONTENT_URI_Post = Uri.parse(URI_Post);
     public static final Uri CONTENT_URI_Login = Uri.parse(URI_Login);
+    public static final Uri CONTENT_URI_Apply = Uri.parse(URI_Apply);
     private static final UriMatcher uriMatcher;
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -39,6 +43,8 @@ public class myContentProvider extends ContentProvider {
                 Login_Contract.FeedEntry.TABLE_NAME, 3);
         uriMatcher.addURI("com.example.mju.embeded.myContentProvider",
                 Login_Contract.FeedEntry.TABLE_NAME + "/#", 4);
+        uriMatcher.addURI("com.example.mju.embeded.myContentProvider",
+                Apply_Contract.FeedEntry.TABLE_NAME, 5);
     }
     private SQLiteDatabase mDB = null;
     private myDBHelper mDBHelper = null;
@@ -165,25 +171,33 @@ public class myContentProvider extends ContentProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         Uri _uri = null;
+        long _ID;
         switch(uriMatcher.match(uri)) {
             case POST:
                 values.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, post_number++);
-                long _ID1 = mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, values);
-                if (_ID1 > 0) {
-                    _uri = ContentUris.withAppendedId(CONTENT_URI_Post, _ID1);
+                _ID = mDB.insert(Post_Contract.FeedEntry.TABLE_NAME, null, values);
+                if (_ID > 0) {
+                    _uri = ContentUris.withAppendedId(CONTENT_URI_Post, _ID);
                     getContext().getContentResolver().notifyChange(_uri, null);
                 }
                 break;
             case POST_ID:
                 break;
             case LOGIN:
-                long _ID2 = mDB.insert(Login_Contract.FeedEntry.TABLE_NAME, null, values);
-                if (_ID2 > 0) {
-                    _uri = ContentUris.withAppendedId(CONTENT_URI_Post, _ID2);
+                _ID = mDB.insert(Login_Contract.FeedEntry.TABLE_NAME, null, values);
+                if (_ID > 0) {
+                    _uri = ContentUris.withAppendedId(CONTENT_URI_Login, _ID);
                     getContext().getContentResolver().notifyChange(_uri, null);
                 }
                 break;
             case LOGIN_ID:
+                break;
+            case APPLY:
+                _ID = mDB.insert(Apply_Contract.FeedEntry.TABLE_NAME, null, values);
+                if (_ID > 0) {
+                    _uri = ContentUris.withAppendedId(CONTENT_URI_Apply, _ID);
+                    getContext().getContentResolver().notifyChange(_uri, null);
+                }
                 break;
             default:
                 throw new SQLException("Failed to insert row into " + uri);
@@ -201,8 +215,11 @@ public class myContentProvider extends ContentProvider {
             case LOGIN :
                 n = mDB.delete(Login_Contract.FeedEntry.TABLE_NAME, selection, selectionArgs);
                 break;
+            case APPLY :
+                n = mDB.delete(Apply_Contract.FeedEntry.TABLE_NAME, selection, selectionArgs);
+                break;
             default :
-                throw new SQLException("Failed to insert row into " + uri);
+                throw new SQLException("Failed to delete row into " + uri);
         }
         return n;
     }
@@ -232,6 +249,15 @@ public class myContentProvider extends ContentProvider {
                 c = qb.query(mDB, projection, selection, selectionArgs, null, null, orderBy);
                 c.setNotificationUri(getContext().getContentResolver(),uri);
                 break;
+            case APPLY :
+                qb = new SQLiteQueryBuilder();
+                qb.setTables(Apply_Contract.FeedEntry.TABLE_NAME);
+                if (TextUtils.isEmpty(sortOrder)) orderBy = Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER;
+                else orderBy = sortOrder;
+
+                c = qb.query(mDB, projection, selection, selectionArgs, null, null, orderBy);
+                c.setNotificationUri(getContext().getContentResolver(),uri);
+                break;
             default :
                 throw new IllegalArgumentException("Unknown URI: " + uri);
         }
@@ -248,7 +274,20 @@ public class myContentProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues values, String selection,
                       String[] selectionArgs) {
-        // TODO: Implement this to handle requests to update one or more rows.
-        throw new UnsupportedOperationException("Not yet implemented");
+        int n;
+        switch(uriMatcher.match(uri)) {
+            case POST :
+                n = mDB.update(Post_Contract.FeedEntry.TABLE_NAME, values, selection, selectionArgs);
+                break;
+            case LOGIN :
+                n = mDB.update(Login_Contract.FeedEntry.TABLE_NAME, values, selection, selectionArgs);
+                break;
+            case APPLY :
+                n = mDB.update(Apply_Contract.FeedEntry.TABLE_NAME, values, selection, selectionArgs);
+                break;
+            default:
+                throw new SQLException("Failed to update row into " + uri);
+        }
+        return n;
     }
 }

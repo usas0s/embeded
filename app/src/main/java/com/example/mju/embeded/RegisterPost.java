@@ -101,7 +101,7 @@ public class RegisterPost extends AppCompatActivity {
 
     }
 
-    public void onRegisterPost()
+    public void onRegisterPost(View view)
     {
         String name = ((EditText) findViewById(R.id.register_post_name)).getText().toString();
         String period = ((EditText) findViewById(R.id.register_post_period)).getText().toString();
@@ -127,7 +127,9 @@ public class RegisterPost extends AppCompatActivity {
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, description);
                 int lim = Integer.parseInt(limit);
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, lim);
+                v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 0);
                 cr.insert(myContentProvider.CONTENT_URI_Post, v);
+                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
             }
             else
             {
