@@ -25,7 +25,9 @@ public class Details extends AppCompatActivity {
     //private Cursor mCursor;
     private ArrayList<HashMap<String, Object>> list;
     private HashMap<String, Object> hashMap;
-
+    private String path;
+    private String name;
+    private int target;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +35,7 @@ public class Details extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Intent intent = getIntent();
-        int target = intent.getIntExtra("number",1);
+        target = intent.getIntExtra("number",1);
         System.out.println("target from intent = " + target);
 
         // DB 연동
@@ -57,6 +59,9 @@ public class Details extends AppCompatActivity {
                             {
                                 Toast.makeText(getApplicationContext(),"참가 신청 페이지로 이동합니다.",Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(getApplicationContext(),Apply.class);
+                                intent.putExtra("img",path);
+                                intent.putExtra("name",name);
+                                intent.putExtra("number",target);
                                 startActivity(intent);
                             }
                         });
@@ -72,13 +77,14 @@ public class Details extends AppCompatActivity {
         hashMap = list.get(0);
 
         // 모임명 셋팅
-        setTitle(hashMap.get("post_name").toString());
+        name = hashMap.get("post_name").toString();
+        setTitle(name);
 
         // 썸네일 셋팅
         ImageView iv_thumbnail = (ImageView)findViewById(R.id.detail_thumbnail);
-        String path = hashMap.get("img_path").toString() + "0"; // 모임명에 숫자를 붙여 이미지 파일을 선택. 0 = 표지, 1~n = 상세 설명
-        System.out.println("★★image file name = " + path);
-        iv_thumbnail.setImageResource(getResources().getIdentifier(path,"drawable",getPackageName()));
+        path = hashMap.get("img_path").toString(); // 모임명에 숫자를 붙여 이미지 파일을 선택. 0 = 표지, 1~n = 상세 설명
+        System.out.println("★★image file name = " + path+"0");
+        iv_thumbnail.setImageResource(getResources().getIdentifier(path+"0","drawable",getPackageName()));
 
         // 개설자 ID 셋팅
         TextView tv_id = (TextView) findViewById(R.id.detail_id);
@@ -102,9 +108,9 @@ public class Details extends AppCompatActivity {
 
         // 설명 이미지 셋팅
         ImageView iv_image = (ImageView)findViewById(R.id.detail_image);
-        path = hashMap.get("img_path").toString()+"1"; // 모임명에 숫자를 붙여 이미지 파일을 선택. 0 = 표지, 1~n = 상세 설명
-        System.out.println("★★detail image file name = " + path);
-        iv_image.setImageResource(getResources().getIdentifier(path,"drawable",getPackageName()));
+        path = hashMap.get("img_path").toString(); // 모임명에 숫자를 붙여 이미지 파일을 선택. 0 = 표지, 1~n = 상세 설명
+        System.out.println("★★detail image file name = " + path+"1");
+        iv_image.setImageResource(getResources().getIdentifier(path+"1","drawable",getPackageName()));
     }
 
     public void showMap(View view)

@@ -18,14 +18,16 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/in"/>
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:src="@drawable/pict"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="모임 등록"
-                android:layout_marginTop="20dp"
-                android:textSize="40sp"
-                android:gravity="center_horizontal"/>
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="40sp"/>
         </LinearLayout>
 
         <LinearLayout
