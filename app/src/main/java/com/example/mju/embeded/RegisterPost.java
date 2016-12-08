@@ -101,7 +101,7 @@ public class RegisterPost extends AppCompatActivity {
 
     }
 
-    public void onRegisterPost()
+    public void onRegisterPost(View view)
     {
         String name = ((EditText) findViewById(R.id.register_post_name)).getText().toString();
         String period = ((EditText) findViewById(R.id.register_post_period)).getText().toString();
@@ -118,7 +118,7 @@ public class RegisterPost extends AppCompatActivity {
         {
             if(((CheckBox)findViewById(R.id.cb_agree)).isChecked())
             {
-                Toast.makeText(getApplicationContext(), "INSERT " + name + " / " + period + " / " + place + " / " + description + " / " + limit + " INTO DB", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "INSERT " + name + " / " + period + " / " + place + " / " + description + " / " + limit + " INTO DB", Toast.LENGTH_LONG).show();
                 // TODO : 입력된 Post 데이터를 DB로 넣을 것. 내용 변경에 따른 수정 요망
                 ContentValues v = new ContentValues();
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, name);
@@ -129,6 +129,7 @@ public class RegisterPost extends AppCompatActivity {
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, description);
                 int lim = Integer.parseInt(limit);
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, lim);
+                v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 0);
                 cr.insert(myContentProvider.CONTENT_URI_Post, v);
                 Toast.makeText(getApplicationContext(), "INSERT " + name + " / " + period + " / " + place + " / " + description + " / " + limit + " / " + Lat + " / " + Lng + " INTO DB", Toast.LENGTH_LONG).show();
             }

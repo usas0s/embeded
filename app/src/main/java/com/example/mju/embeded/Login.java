@@ -36,13 +36,13 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Lcontext = getApplicationContext();
+        Lcontext = this;
+        cr =getContentResolver();
 }
 
     public void memberLeave(){
-        cr = getContentResolver();
-        cr.delete(Content_URI, "_id ="+current_Cursor.getInt(current_Cursor.getColumnIndex(Login_Contract.FeedEntry.COLUMN_NAME_ID)), null);
-        logout();
+        //cr = getContentResolver();
+        cr.delete(Content_URI, "_id = "+current_Cursor.getInt(current_Cursor.getColumnIndex(Login_Contract.FeedEntry.COLUMN_NAME_ID)), null);
     }
 
     public void logout(){
@@ -77,7 +77,7 @@ public class Login extends AppCompatActivity {
     //return :일치하는 db행의 Cursor
     public Cursor search(String id, String password){
         Cursor mCursor;
-        cr =getContentResolver();
+        //cr =getContentResolver();
         mCursor = cr.query(Content_URI, null, "owner_id =\""+id+"\"", null, null);
         if(mCursor.getCount()!=0) {
             while(mCursor.moveToNext()){
@@ -124,6 +124,7 @@ public class Login extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
             intent.putExtra("login", Login_State);
             startActivity(intent);
+            finish();
         }
         else{
             editText1.setText(null);

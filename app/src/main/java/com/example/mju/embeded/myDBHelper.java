@@ -25,6 +25,7 @@ public class myDBHelper extends SQLiteOpenHelper {
         //db.execSQL(Post_Contract.SQL_DELETE_TABLE);
         db.execSQL(Login_Contract.SQL_CREATE_TABLE);
         db.execSQL(Post_Contract.SQL_CREATE_TABLE);
+        db.execSQL(Apply_Contract.SQL_CREATE_TABLE);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
