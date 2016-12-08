@@ -30,6 +30,6 @@ public class Intro extends AppCompatActivity {
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 finish();
             }
-        }, 2000);
+        }, 10); //TODO 개발완료후 10 -> 1500으로 복구
     }
 }

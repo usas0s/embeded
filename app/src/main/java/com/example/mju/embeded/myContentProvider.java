@@ -112,7 +112,7 @@ public class myContentProvider extends ContentProvider {
 
 
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
-        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "시험 끝나고 영화보러 갈 사람!");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "시험 끝나고 영화보러 갈");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "movie");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "12월 19일 (월) 19시 00분 ~ 12월 20일 (화) 19시 00분");
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "용인 롯데시네마");
@@ -133,6 +133,28 @@ public class myContentProvider extends ContentProvider {
         w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "오버워치 한판 하러가실 분!?\n" +
                 "시즌3인데 설마... 아직도 실버에요?\n" +
                 "빨리 다이아 올리러 갑시다.\n");
+        this.insert(CONTENT_URI_Post, w);
+
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "맛집탐방하러 가실분!");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "food");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "12월 21일 (수) 18시 00분 ~ 12월 21일 (수) 20시 00분");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "효자동 초밥집");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 4);
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 2);
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "목표는 하나!\n" +
+                "효자동 초밥집으로 GO GO\n");
+        this.insert(CONTENT_URI_Post, w);
+
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "몸보신하러 가실분");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "solo");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "12월 22일 (목) 18시 00분 ~ 12월 22일 (목) 20시 00분");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "경복궁 토속촌");
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 4);
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 2);
+        w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "시험도 끝났는데.. 몸보신하러 갑시다\n" +
+                "보양식은 삼계탕으로!\n");
         this.insert(CONTENT_URI_Post, w);
 
         return true;
