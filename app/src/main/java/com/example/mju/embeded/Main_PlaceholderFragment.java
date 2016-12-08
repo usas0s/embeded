@@ -72,7 +72,7 @@ public class Main_PlaceholderFragment extends Fragment {
         mDB = mDbHelper.getWritableDatabase();
 
         // 원하는 Db값 리스트에 저장
-        mCursor = mDB.query("post_table", new String[]{"post_number"}, null,null,null,null,"_id","5");
+        mCursor = mDB.query("post_table", new String[]{"post_number"}, null,null,null,null,"_id","7");
         if(mCursor != null){
             if(mCursor.moveToFirst()){
                 do{
