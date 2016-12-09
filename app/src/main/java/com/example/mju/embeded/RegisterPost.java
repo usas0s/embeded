@@ -131,7 +131,8 @@ public class RegisterPost extends AppCompatActivity {
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, lim);
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 0);
                 cr.insert(myContentProvider.CONTENT_URI_Post, v);
-                Toast.makeText(getApplicationContext(), "INSERT " + name + " / " + period + " / " + place + " / " + description + " / " + limit + " / " + Lat + " / " + Lng + " INTO DB", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "모임 신청 완료!", Toast.LENGTH_LONG).show();
+                finish();
             }
             else
             {

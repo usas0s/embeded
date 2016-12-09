@@ -188,3 +188,4 @@ public class Details extends AppCompatActivity {
         return list;
     }
 }
+
