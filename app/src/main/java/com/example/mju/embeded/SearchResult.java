@@ -58,7 +58,7 @@ public class SearchResult extends AppCompatActivity {
                 String toast = Integer.toString(position) + "번 Item";
 
                 Intent intent = new Intent(getApplicationContext(),Details.class);
-                //intent.putExtra("number", pNumber);
+                intent.putExtra("number", pNumber);
                 startActivity(intent);
             }
         }) ;
