@@ -33,6 +33,8 @@ public class Login extends AppCompatActivity {
     public static String current_Account_EMAIL;
     private Cursor current_Cursor;
 
+    //외부 Activity에서 메소드 호출 가능하도록 context
+    //contentResolver 초기화.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +61,12 @@ public class Login extends AppCompatActivity {
         Login_State = false;
     }
 
+    //현재 로그인여부 반환.
     public boolean getLoginState(){
         return Login_State;
     }
 
+    //현재 로그인된 계정 values 반환.
     public ContentValues getLoginAccount(){
         if(!Login_State) return null;
         ContentValues v = new ContentValues();
@@ -132,6 +136,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
+    //
     public void onClickSignup(View view) {
         Intent intent = new Intent(this, Login_Register.class);
         startActivity(intent);
