@@ -13,20 +13,10 @@
     android:theme="@style/AppTheme"
     android:weightSum="1">
 
-    <LinearLayout
-        android:id="@+id/main_nav_header_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/nav_header_toolbar"
-        android:background="@color/white"
-        android:orientation="horizontal">
-    </LinearLayout>
-
-
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.example.mju.embeded.LoginFragment"
         android:id="@+id/fragment" />
-
 
 </LinearLayout>
