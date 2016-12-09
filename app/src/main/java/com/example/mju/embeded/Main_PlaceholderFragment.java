@@ -23,6 +23,7 @@ public class Main_PlaceholderFragment extends Fragment {
     ArrayList<HashMap<String,String>> mList = new ArrayList<HashMap<String, String>>();
     private SQLiteDatabase mDB;
     Cursor mCursor;
+    GridView mGridView;
 
     public Main_PlaceholderFragment() {
     }
@@ -43,10 +44,10 @@ public class Main_PlaceholderFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.main_fragment, container, false);
 
         if(sectionNumber == 1){
-            GridView gridView = (GridView) rootView.findViewById(R.id.main_gridView);
-            gridView.setAdapter(new Main_GeneralGridviewAdapter(getActivity().getApplicationContext()));
+            mGridView = (GridView) rootView.findViewById(R.id.main_gridView);
+            mGridView.setAdapter(new Main_GeneralGridviewAdapter(getActivity().getApplicationContext()));
 
-            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Main_GridviewItem item = (Main_GridviewItem) parent.getItemAtPosition(position) ;
@@ -56,10 +57,10 @@ public class Main_PlaceholderFragment extends Fragment {
                 }
             });
         }else if(sectionNumber == 2){
-            GridView gridView = (GridView) rootView.findViewById(R.id.main_gridView);
-            gridView.setAdapter(new Main_LimitGridviewAdapter(getActivity().getApplicationContext()));
+            mGridView = (GridView) rootView.findViewById(R.id.main_gridView);
+            mGridView.setAdapter(new Main_LimitGridviewAdapter(getActivity().getApplicationContext()));
 
-            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Main_GridviewItem item = (Main_GridviewItem) parent.getItemAtPosition(position) ;
@@ -70,10 +71,10 @@ public class Main_PlaceholderFragment extends Fragment {
                 }
             });
         }else{
-            GridView gridView = (GridView) rootView.findViewById(R.id.main_gridView);
-            gridView.setAdapter(new Main_NameGridviewAdapter(getActivity().getApplicationContext()));
+            mGridView = (GridView) rootView.findViewById(R.id.main_gridView);
+            mGridView.setAdapter(new Main_NameGridviewAdapter(getActivity().getApplicationContext()));
 
-            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Main_GridviewItem item = (Main_GridviewItem) parent.getItemAtPosition(position) ;

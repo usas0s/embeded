@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 
 /**
  * Copyright (C) 컴퓨터공학과 60112320 김동빈
+ * Activity : Settings Activity
+ *
  */
 
 public abstract class Main_AppCompatPreferenceActivity extends PreferenceActivity {
