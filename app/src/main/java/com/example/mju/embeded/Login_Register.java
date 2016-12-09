@@ -148,8 +148,13 @@ public class Login_Register extends AppCompatActivity {
         cr.insert(Content_uri, v);
 
         Toast.makeText(this, "회원가입 완료. \n로그인창으로 돌아갑니다.", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
+
+        Intent intent1 = new Intent(this, Service_SoundEffect.class);
+        intent1.putExtra("sound", R.raw.water);
+        startService(intent1);
+
+        Intent intent2 = new Intent(this, Login.class);
+        startActivity(intent2);
         finish();
     }
     public static boolean isId(String id) {

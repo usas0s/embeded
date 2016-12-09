@@ -124,6 +124,10 @@ public class Login extends AppCompatActivity {
 
             Toast.makeText(this, current_Account_NAME + "님 환영합니다.", Toast.LENGTH_SHORT).show();
 
+            Intent intent1 = new Intent(this, Service_SoundEffect.class);
+            intent1.putExtra("sound", R.raw.water);
+            startService(intent1);
+
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
             intent.putExtra("login", Login_State);
             startActivity(intent);
@@ -136,7 +140,7 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    //
+    //회원가입.
     public void onClickSignup(View view) {
         Intent intent = new Intent(this, Login_Register.class);
         startActivity(intent);
