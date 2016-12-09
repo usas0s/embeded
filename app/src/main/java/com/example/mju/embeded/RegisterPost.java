@@ -35,6 +35,7 @@ public class RegisterPost extends AppCompatActivity {
     public static String defaultUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
     Handler handler = new Handler();
     String Lat, Lng;
+    String img_path = "in";
 
     private String request(String urlStr) {
         StringBuilder output = new StringBuilder();
@@ -121,6 +122,7 @@ public class RegisterPost extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(), "INSERT " + name + " / " + period + " / " + place + " / " + description + " / " + limit + " INTO DB", Toast.LENGTH_LONG).show();
                 // TODO : 입력된 Post 데이터를 DB로 넣을 것. 내용 변경에 따른 수정 요망
                 ContentValues v = new ContentValues();
+                v.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, name);
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, period);
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, place);
@@ -129,7 +131,8 @@ public class RegisterPost extends AppCompatActivity {
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, description);
                 int lim = Integer.parseInt(limit);
                 v.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, lim);
-                v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 0);
+                v.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, lim);
+                v.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, img_path);
                 cr.insert(myContentProvider.CONTENT_URI_Post, v);
                 Toast.makeText(getApplicationContext(), "모임 신청 완료!", Toast.LENGTH_LONG).show();
                 finish();
