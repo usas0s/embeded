@@ -102,6 +102,25 @@ public class MainActivity extends ActionBarActivity {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.DONUT) {
                             mDrawerLayout.closeDrawers();
                         }
+                        switch(menuItem.getItemId())
+                        {
+                            case R.id.nav_home:
+                                Intent home_intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(home_intent);
+                                mDrawerLayout.closeDrawers();
+                                return true;
+                            case R.id.nav_search:
+                                Intent searching_intent = new Intent(getApplicationContext(), SearchResult.class);
+                                startActivity(searching_intent);
+                                mDrawerLayout.closeDrawers();
+                                return true;
+                            case R.id.nav_setting:
+                                Intent set_intent = new Intent(getApplicationContext(), Main_SettingsActivity.class);
+                                startActivity(set_intent);
+                                mDrawerLayout.closeDrawers();
+                                return true;
+                        }
+
                         return true;
                     }
                 });
@@ -156,6 +175,26 @@ public class MainActivity extends ActionBarActivity {
         Intent login = new Intent(this, Login.class);
         startActivity(login);
     }
+
+    public void onClickLogout(View view){
+        ((Login)Login.Lcontext).logout();
+        //TODO 부하가 심한 방법 나중에 수정요함
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        Toast.makeText(this, "정상적으로 로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    public void onClickLeave(View view){
+        ((Login)Login.Lcontext).memberLeave();
+        ((Login)Login.Lcontext).logout();
+        Intent intent = new Intent(this, MainActivity.class);
+        Toast.makeText(this, "회원 탈퇴 되었습니다.", Toast.LENGTH_SHORT).show();
+        startActivity(intent);
+        finish();
+    }
+
+    // Notification 버튼
     public void onClickPush(View view){
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
