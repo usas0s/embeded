@@ -88,9 +88,10 @@ public class Apply extends AppCompatActivity {
                     ContentValues w = new ContentValues();
                     w.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, cur);
                     int m = cr.update(myContentProvider.CONTENT_URI_Post, w, mSelectionClauses, null);
-                    Toast.makeText(getApplicationContext(), "Success : " + m, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "참가신청 완료!" , Toast.LENGTH_SHORT).show();
+                    finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Failure", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "자리가 가득 찼습니다.", Toast.LENGTH_SHORT).show();
                 }
 
             }
