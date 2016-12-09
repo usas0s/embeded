@@ -250,30 +250,6 @@ public class myContentProvider extends ContentProvider {
         }
         j++;
 
-//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_OWNER_ID, "admin");
-//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_POST_NAME, "Tour de Myoungji");
-//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_IMG, "ture");
-//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_PERIOD, "12월 20일 (목) 18시 00분 ~ 12월 21일 (금) 06시 00분");
-//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_PLACE, "경복궁 토속촌");
-//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LIMIT, 4);
-//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_CURRENT, 2);
-//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_DESCRIPTION, "시험도 끝났는데.. 몸보신하러 갑시다\n" +
-//                "보양식은 삼계탕으로!\n");
-//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LATITUDE, "37.577726");
-//        w.put(Post_Contract.FeedEntry.COLUMN_NAME_LONGITUDE, "126.971621");
-//        this.insert(CONTENT_URI_Post, w);
-//
-//        i = 2;
-//        while(i-- > 0) {
-//            ContentValues u = new ContentValues();
-//            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_POST_NUMBER, j);
-//            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_USERNAME, "test");
-//            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_CALLNUMBER, i);
-//            u.put(Apply_Contract.FeedEntry.COLUMN_NAME_EMAIL, "test@test.t");
-//            this.insert(CONTENT_URI_Apply, u);
-//        }
-//        j++;
-
         return true;
     }
 
