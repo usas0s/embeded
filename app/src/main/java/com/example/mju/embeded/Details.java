@@ -20,17 +20,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Details extends AppCompatActivity {
+    // 멤버 변수들
     private SQLiteDatabase mDB;
-    // 1206 modified : Post_DbHelper -> myDBHelper
     private myDBHelper mDbHelper;
-    //private Cursor mCursor;
-    private ArrayList<HashMap<String, Object>> list;
-    private HashMap<String, Object> hashMap;
-    private String path;
+    private ArrayList<HashMap<String, Object>> list; // Hashmap 을 저장하는 list
+    private HashMap<String, Object> hashMap; // query 를 위한 hashmap
+    private String path; // 이미지 파일의 이름
     private String name;
-    private int target;
-    private String Lat;
-    private String Lng;
+    private int target; // 검색 할 글의 번호
+    private String Lat,Lng; // 위도, 경도
+    private String destination; // 목적지 이름. 지도에서도 사용.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +99,8 @@ public class Details extends AppCompatActivity {
 
         // 모임 장소 셋팅
         TextView tv_place = (TextView) findViewById(R.id.detail_place);
-        tv_place.setText(hashMap.get("place").toString());
+        destination = hashMap.get("place").toString();
+        tv_place.setText(destination);
 
         // 최대 | 현재 인원 셋팅
         TextView tv_limit = (TextView) findViewById(R.id.detail_limit);
@@ -124,7 +124,7 @@ public class Details extends AppCompatActivity {
     // 지도 호출
     public void showMap(View view)
     {
-        Uri uri = Uri.parse("geo:"+Lat+","+Lng);
+        Uri uri = Uri.parse("geo:"+Lat+","+Lng+"?q="+Lat+","+Lng+"("+destination+")");
         Intent it = new Intent(Intent.ACTION_VIEW,uri);
         startActivity(it);
     }
@@ -134,14 +134,13 @@ public class Details extends AppCompatActivity {
     {
         String share_postname = hashMap.get("post_name").toString(); // 모임 이름
         String share_description = hashMap.get("description").toString(); // 상세 설명
-        Context context = this;
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_SUBJECT, share_postname);
         intent.putExtra(Intent.EXTRA_TEXT, "\n\n" + share_description + "\n\n같이 가지 않으실래요?"); // [모임명] 상세설명" 메시지로 보낸다.
 
         intent.setType("text/plain");
 
-        context.startActivity(Intent.createChooser(intent, "공유하기"));
+        startActivity(Intent.createChooser(intent, "공유하기"));
     }
 
     // DB 탐색 기능. parameter = 찾을 int형 post_number
